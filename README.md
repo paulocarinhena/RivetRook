@@ -11,6 +11,14 @@
   <img src="https://flagcdn.com/w20/br.png" width="20" alt="BR"> <a href="#português">Português</a> &nbsp;·&nbsp; <img src="https://flagcdn.com/w20/us.png" width="20" alt="US"> <a href="#english">English</a>
 </p>
 
+<p align="center">
+  <img src="./RivetRook.png" alt="RivetRook CLI screenshot" width="1100">
+</p>
+
+<p align="center">
+  Exemplo da interface interativa do RivetRook · Example of the RivetRook interactive interface
+</p>
+
 ---
 
 ## ![BR](https://flagcdn.com/w20/br.png) Português <a id="português"></a>
