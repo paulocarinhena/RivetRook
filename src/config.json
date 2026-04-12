@@ -1,0 +1,734 @@
+{
+  "i18n": {
+    "pt-br": {
+      "lang_prompt": "Escolha o idioma / Choose language:",
+      "lang_option_pt": "Português (Brasil)",
+      "lang_option_en": "English",
+      "os_not_supported": "Sistema operacional não suportado: {}",
+      "live_output": "(saída em tempo real)",
+      "live_hint": "Se o instalador lançar a ferramenta interativamente, pressione Ctrl+C ou digite 'exit' para retornar.",
+      "done": "concluído",
+      "failed": "falhou",
+      "last_output_lines": "Últimas linhas da saída:",
+      "installed": "instalado",
+      "shell_profile": "perfil de shell",
+      "status_installed": "instalado",
+      "status_not_installed": "não instalado",
+      "already_installed": "{} já está instalado.",
+      "not_found": "{} não encontrado.",
+      "install_now": "Deseja instalar {} agora?",
+      "prerequisite_missing": "Pré-requisito obrigatório ausente. Encerrando.",
+      "no_install_cmd": "Sem comando de instalação para este sistema.",
+      "sudo_not_found": "sudo não encontrado. Rode como root ou instale sudo.",
+      "elevating_sudo": "Elevando permissão com sudo.",
+      "installing": "Instalando {}",
+      "prereq_install_failed": "Instalação do pré-requisito falhou. Verifique permissões.",
+      "path_persisted": "PATH persistido: {}",
+      "installed_successfully": "{} instalado com sucesso.",
+      "choose_tool": "Escolha número/nome (ex: 1 ou 1,3,5)",
+      "enter_to_exit": "(enter para sair):",
+      "number_out_of_range": "Número fora do intervalo (1–{}).",
+      "invalid_option_tool": "Opção inválida. Tente um número ou um dos nomes listados.",
+      "multi_choose_action": "Ação para as {} ferramentas selecionadas",
+      "multi_action_hint_3": "(1/2/3):",
+      "multi_action_hint_4": "(1/2/3/4):",
+      "multi_starting": "Processando {} ferramentas: {}",
+      "multi_progress": "[{}/{}] {}",
+      "choose_action": "— escolha uma ação:",
+      "not_installed_label": "não instalado",
+      "action_install": "Instalar",
+      "action_upgrade": "Atualizar",
+      "action_uninstall": "Desinstalar",
+      "key_configured": "configurada",
+      "key_not_configured": "não configurada",
+      "configure_api_key": "Configurar API key",
+      "action_hint_4": "(1/2/3/4, enter para cancelar):",
+      "action_hint_3": "(1/2/3, enter para cancelar):",
+      "action_label": "Ação",
+      "invalid_option": "Opção inválida.",
+      "action_name_install": "instalação",
+      "action_name_upgrade": "atualização",
+      "action_name_uninstall": "desinstalação",
+      "action_label_install": "Instalando",
+      "action_label_upgrade": "Atualizando",
+      "action_label_uninstall": "Desinstalando",
+      "no_action_cmd": "Sem comando de {} para este sistema.",
+      "npm_prefix_failed": "Não foi possível configurar o prefixo npm do usuário.",
+      "try_manually": "Tente executar manualmente: {}",
+      "using_sudo": "Usando sudo para elevação de permissão.",
+      "starting_action": "Iniciando {} de {}…",
+      "uninstalled_success": "Desinstalado com sucesso.",
+      "uninstall_but_binary": "Desinstalação concluída, mas binário ainda detectado no PATH.",
+      "remaining_binary": "Binário remanescente: {}",
+      "installed_excl": "Instalado!",
+      "ready_excl": "Pronto!",
+      "installed_but_no_path": "Instalado, mas binário não encontrado no PATH.",
+      "binary_label": "Binário: {}",
+      "reload_shell": "Recarregar shell agora para ativar {}?",
+      "configure_key_now": "Configurar API key de {} agora?",
+      "failed_code": "Falhou com código {}.",
+      "exiting": "Encerrando.",
+      "checking_tools": "Verificando ferramentas",
+      "system_label": "Sistema: {}",
+      "path_adjusted": "PATH ajustado para esta sessão: {}",
+      "path_persisted_next": "PATH persistido para próximos terminais: {}",
+      "prerequisite_section": "Pré-requisito",
+      "completed": "Concluído.",
+      "open_new_terminal": "Abra um novo terminal para ativar os novos comandos.",
+      "reloading_shell": "Recarregando {} …",
+      "yes_short": "S",
+      "no_short": "n",
+      "yes_words": [
+        "s",
+        "sim",
+        "y",
+        "yes"
+      ],
+      "api_key_already_set": "API key já configurada.",
+      "replace_key": "Substituir pela nova?",
+      "no_key_provided": "Nenhuma chave fornecida. Operação cancelada.",
+      "saved_at": "Salvo em {}",
+      "error_saving": "Erro ao salvar {}: {}",
+      "key_persisted": "{} persistido nos arquivos de shell.",
+      "key_active": "{} ativo nesta sessão.",
+      "npm_prefix_redirect": "npm: prefixo redirecionado para {} (sem necessidade de sudo)",
+      "node_old_version": "Node.js {} detectado — ferramentas modernas requerem v{}+.",
+      "node_old_hint": "O pacote instala mas falha ao executar (ex.: SyntaxError no runtime).",
+      "upgrade_node_now": "Atualizar Node.js para LTS agora?",
+      "updating_node": "Atualizando Node.js",
+      "node_upgrade_failed": "Falha ao atualizar Node.js.",
+      "try_manually_cmd": "Tente manualmente: {}",
+      "node_updated": "Node.js atualizado para v{}.",
+      "node_updated_reload": "Node.js atualizado — recarregue o shell para ativar: {}",
+      "node_updated_not_detected": "Node.js atualizado, mas versão ainda não detectada.",
+      "run_cmd_and_retry": "Rode {} e tente novamente.",
+      "continue_anyway": "Continuar instalação mesmo assim?",
+      "paste_api_key": "Cole sua API key:",
+      "git_not_found": "{} requer Git (git-bash) no Windows.",
+      "git_install_prompt": "Deseja instalar o Git agora via winget?",
+      "git_installing": "Instalando Git",
+      "git_install_failed": "Falha ao instalar o Git automaticamente.",
+      "git_install_manual": "Baixe e instale manualmente: https://git-scm.com/downloads/win",
+      "git_installed_ok": "Git instalado com sucesso.",
+      "git_required_skip": "{} não pode ser instalado sem Git. Pulando.",
+      "git_winget_missing": "winget não disponível. Instale o Git manualmente: https://git-scm.com/downloads/win",
+      "path_added_ok": "{} adicionado ao PATH para funcionar corretamente.",
+      "path_add_failed": "Não foi possível atualizar o PATH automaticamente.",
+      "path_manual_hint": "Adicione manualmente: Propriedades do Sistema → Variáveis de Ambiente → PATH do Usuário → Novo",
+      "press_key": "Finalizado! Pressione qualquer tecla para continuar…"
+    },
+    "en": {
+      "lang_prompt": "Escolha o idioma / Choose language:",
+      "lang_option_pt": "Português (Brasil)",
+      "lang_option_en": "English",
+      "os_not_supported": "Unsupported operating system: {}",
+      "live_output": "(live output)",
+      "live_hint": "If the installer launches the tool interactively, press Ctrl+C or type 'exit' to return.",
+      "done": "done",
+      "failed": "failed",
+      "last_output_lines": "Last output lines:",
+      "installed": "installed",
+      "shell_profile": "shell profile",
+      "status_installed": "installed",
+      "status_not_installed": "not installed",
+      "already_installed": "{} is already installed.",
+      "not_found": "{} not found.",
+      "install_now": "Install {} now?",
+      "prerequisite_missing": "Required prerequisite missing. Exiting.",
+      "no_install_cmd": "No install command for this system.",
+      "sudo_not_found": "sudo not found. Run as root or install sudo.",
+      "elevating_sudo": "Elevating permissions with sudo.",
+      "installing": "Installing {}",
+      "prereq_install_failed": "Prerequisite installation failed. Check permissions.",
+      "path_persisted": "PATH persisted: {}",
+      "installed_successfully": "{} installed successfully.",
+      "choose_tool": "Choose number/name (e.g. 1 or 1,3,5)",
+      "enter_to_exit": "(enter to exit):",
+      "number_out_of_range": "Number out of range (1–{}).",
+      "invalid_option_tool": "Invalid option. Try a number or one of the listed names.",
+      "multi_choose_action": "Action for {} selected tools",
+      "multi_action_hint_3": "(1/2/3):",
+      "multi_action_hint_4": "(1/2/3/4):",
+      "multi_starting": "Processing {} tools: {}",
+      "multi_progress": "[{}/{}] {}",
+      "choose_action": "— choose an action:",
+      "not_installed_label": "not installed",
+      "action_install": "Install",
+      "action_upgrade": "Upgrade",
+      "action_uninstall": "Uninstall",
+      "key_configured": "configured",
+      "key_not_configured": "not configured",
+      "configure_api_key": "Configure API key",
+      "action_hint_4": "(1/2/3/4, enter to cancel):",
+      "action_hint_3": "(1/2/3, enter to cancel):",
+      "action_label": "Action",
+      "invalid_option": "Invalid option.",
+      "action_name_install": "installation",
+      "action_name_upgrade": "upgrade",
+      "action_name_uninstall": "uninstallation",
+      "action_label_install": "Installing",
+      "action_label_upgrade": "Upgrading",
+      "action_label_uninstall": "Uninstalling",
+      "no_action_cmd": "No {} command for this system.",
+      "npm_prefix_failed": "Could not configure npm user prefix.",
+      "try_manually": "Try running manually: {}",
+      "using_sudo": "Using sudo for permission elevation.",
+      "starting_action": "Starting {} of {}…",
+      "uninstalled_success": "Uninstalled successfully.",
+      "uninstall_but_binary": "Uninstall completed, but binary still detected in PATH.",
+      "remaining_binary": "Remaining binary: {}",
+      "installed_excl": "Installed!",
+      "ready_excl": "Ready!",
+      "installed_but_no_path": "Installed, but binary not found in PATH.",
+      "binary_label": "Binary: {}",
+      "reload_shell": "Reload shell now to activate {}?",
+      "configure_key_now": "Configure API key for {} now?",
+      "failed_code": "Failed with code {}.",
+      "exiting": "Exiting.",
+      "checking_tools": "Checking tools",
+      "system_label": "System: {}",
+      "path_adjusted": "PATH adjusted for this session: {}",
+      "path_persisted_next": "PATH persisted for next terminals: {}",
+      "prerequisite_section": "Prerequisite",
+      "completed": "Done.",
+      "open_new_terminal": "Open a new terminal to activate the new commands.",
+      "reloading_shell": "Reloading {} …",
+      "yes_short": "Y",
+      "no_short": "n",
+      "yes_words": [
+        "y",
+        "yes",
+        "s",
+        "sim"
+      ],
+      "api_key_already_set": "API key already configured.",
+      "replace_key": "Replace with new one?",
+      "no_key_provided": "No key provided. Operation cancelled.",
+      "saved_at": "Saved at {}",
+      "error_saving": "Error saving {}: {}",
+      "key_persisted": "{} persisted in shell files.",
+      "key_active": "{} active in this session.",
+      "npm_prefix_redirect": "npm: prefix redirected to {} (no sudo needed)",
+      "node_old_version": "Node.js {} detected — modern tools require v{}+.",
+      "node_old_hint": "Package installs but fails to run (e.g.: SyntaxError at runtime).",
+      "upgrade_node_now": "Upgrade Node.js to LTS now?",
+      "updating_node": "Updating Node.js",
+      "node_upgrade_failed": "Failed to upgrade Node.js.",
+      "try_manually_cmd": "Try manually: {}",
+      "node_updated": "Node.js updated to v{}.",
+      "node_updated_reload": "Node.js updated — reload the shell to activate: {}",
+      "node_updated_not_detected": "Node.js updated, but version not yet detected.",
+      "run_cmd_and_retry": "Run {} and try again.",
+      "continue_anyway": "Continue installation anyway?",
+      "paste_api_key": "Paste your API key:",
+      "git_not_found": "{} requires Git (git-bash) on Windows.",
+      "git_install_prompt": "Install Git now via winget?",
+      "git_installing": "Installing Git",
+      "git_install_failed": "Failed to install Git automatically.",
+      "git_install_manual": "Download and install manually: https://git-scm.com/downloads/win",
+      "git_installed_ok": "Git installed successfully.",
+      "git_required_skip": "{} cannot be installed without Git. Skipping.",
+      "git_winget_missing": "winget not available. Install Git manually: https://git-scm.com/downloads/win",
+      "path_added_ok": "{} added to PATH to work correctly.",
+      "path_add_failed": "Could not update PATH automatically.",
+      "path_manual_hint": "Add manually: System Properties → Environment Variables → User PATH → New",
+      "press_key": "Done! Press any key to continue…"
+    }
+  },
+  "prerequisite": {
+    "name": "Node.js",
+    "check": [
+      "node -v",
+      "npm -v"
+    ],
+    "install": {
+      "windows": "winget install -e --id OpenJS.NodeJS.LTS",
+      "macos": "curl -fsSL https://raw.githubusercontent.com/mklement0/n-install/stable/bin/n-install | bash -s 24",
+      "linux": {
+        "debian": "apt-get update && apt-get install -y nodejs npm",
+        "fedora": "dnf install -y nodejs npm",
+        "arch": "pacman -Sy --noconfirm nodejs npm",
+        "default": "curl -fsSL https://raw.githubusercontent.com/mklement0/n-install/stable/bin/n-install | bash -s 24"
+      }
+    }
+  },
+  "tools": {
+    "codex": {
+      "author": "OpenAI",
+      "description": "Agente de codificação autônomo que opera diretamente no terminal",
+      "description_en": "Autonomous coding agent that operates directly in the terminal",
+      "needs_git": 0,
+      "install": {
+        "all": "npm i -g @openai/codex"
+      },
+      "upgrade": {
+        "all": "npm i -g @openai/codex@latest"
+      },
+      "run": "codex",
+      "uninstall": {
+        "all": "npm uninstall -g @openai/codex"
+      }
+    },
+    "claude": {
+      "author": "Anthropic",
+      "description": "CLI oficial do Claude Code com acesso total ao ambiente de desenvolvimento",
+      "description_en": "Official Claude Code CLI with full access to the development environment",
+      "needs_git": 1,
+      "path_entry": {
+        "windows": "%USERPROFILE%\\.local\\bin"
+      },
+      "install": {
+        "windows": "irm https://claude.ai/install.ps1 | iex",
+        "macos": "curl -fsSL https://claude.ai/install.sh | bash",
+        "linux": "curl -fsSL https://claude.ai/install.sh | bash"
+      },
+      "upgrade": {
+        "all": "claude upgrade"
+      },
+      "run": "claude",
+      "uninstall": {
+        "windows": "winget uninstall -e --id Anthropic.Claude || winget uninstall -e --id Claude.Claude || true",
+        "macos": "([ -f /usr/local/bin/claude ] && sudo rm -f /usr/local/bin/claude || true) && rm -f \"$HOME/.local/bin/claude\"",
+        "linux": "([ -f /usr/local/bin/claude ] && sudo rm -f /usr/local/bin/claude || true) && rm -f \"$HOME/.local/bin/claude\""
+      }
+    },
+    "opencode": {
+      "author": "SST / Dax",
+      "description": "Assistente de código open source com suporte a múltiplos modelos de IA",
+      "description_en": "Open source code assistant with multi-model AI support",
+      "needs_git": 0,
+      "version_cmd": {
+        "windows": "opencode-cli --version",
+        "all": "opencode --version"
+      },
+      "install": {
+        "all": "npm i -g opencode-ai",
+        "linux_alt": "curl -fsSL https://opencode.ai/install | bash",
+        "bun": "bun add -g opencode-ai"
+      },
+      "upgrade": {
+        "all": "opencode upgrade"
+      },
+      "run": "opencode",
+      "uninstall": {
+        "all": "npm uninstall -g opencode-ai || bun remove -g opencode-ai || true"
+      }
+    },
+    "copilot": {
+      "author": "GitHub / Microsoft",
+      "description": "Assistente de código com integração nativa ao ecossistema GitHub",
+      "description_en": "Code assistant with native GitHub ecosystem integration",
+      "needs_git": 0,
+      "install": {
+        "windows": "winget install GitHub.Copilot",
+        "macos": "curl -fsSL https://gh.io/copilot-install | bash",
+        "linux": "curl -fsSL https://gh.io/copilot-install | bash",
+        "all_alt": "npm install -g @github/copilot"
+      },
+      "upgrade": {
+        "all": "copilot update"
+      },
+      "run": "copilot",
+      "uninstall": {
+        "windows": "winget uninstall -e --id GitHub.Copilot || true",
+        "macos": "npm uninstall -g @github/copilot || (command -v gh >/dev/null 2>&1 && gh extension remove github/gh-copilot) || true",
+        "linux": "npm uninstall -g @github/copilot || (command -v gh >/dev/null 2>&1 && gh extension remove github/gh-copilot) || true"
+      }
+    },
+    "cody": {
+      "author": "Sourcegraph",
+      "description": "CLI do Cody para chat e automação de código no terminal",
+      "description_en": "Cody CLI for chat and code automation in the terminal",
+      "needs_git": 0,
+      "install": {
+        "all": "npm install -g @sourcegraph/cody"
+      },
+      "upgrade": {
+        "all": "npm install -g @sourcegraph/cody@latest"
+      },
+      "run": "cody",
+      "uninstall": {
+        "all": "npm uninstall -g @sourcegraph/cody"
+      }
+    },
+    "kilocode": {
+      "author": "Kilo Code",
+      "description": "Fork open source do Cline com funcionalidades extras e sem limites de uso",
+      "description_en": "Open source Cline fork with extra features and no usage limits",
+      "needs_git": 0,
+      "install": {
+        "all": "npm install -g @kilocode/cli"
+      },
+      "upgrade": {
+        "all": null
+      },
+      "run": "kilocode",
+      "uninstall": {
+        "all": "npm uninstall -g @kilocode/cli"
+      }
+    },
+    "gemini": {
+      "author": "Google",
+      "description": "CLI do Gemini com acesso aos modelos Google e integração com Google Search",
+      "description_en": "Gemini CLI with access to Google models and Google Search integration",
+      "needs_git": 0,
+      "install": {
+        "all": "npm install -g @google/gemini-cli"
+      },
+      "upgrade": {
+        "all": null
+      },
+      "run": "gemini",
+      "uninstall": {
+        "all": "npm uninstall -g @google/gemini-cli"
+      }
+    },
+    "kimi": {
+      "author": "Moonshot AI",
+      "description": "CLI do Kimi para codificação e automação no terminal com suporte a ACP/MCP",
+      "description_en": "Kimi CLI for coding and terminal automation with ACP/MCP support",
+      "needs_git": 0,
+      "path_entry": {
+        "windows": "%USERPROFILE%\\.local\\bin"
+      },
+      "install": {
+        "windows": "Invoke-RestMethod https://code.kimi.com/install.ps1 | Invoke-Expression",
+        "macos": "curl -LsSf https://code.kimi.com/install.sh | bash",
+        "linux": "curl -LsSf https://code.kimi.com/install.sh | bash"
+      },
+      "upgrade": {
+        "windows": "Invoke-RestMethod https://code.kimi.com/install.ps1 | Invoke-Expression",
+        "macos": "uv tool upgrade kimi-cli --no-cache || curl -LsSf https://code.kimi.com/install.sh | bash",
+        "linux": "uv tool upgrade kimi-cli --no-cache || curl -LsSf https://code.kimi.com/install.sh | bash"
+      },
+      "run": "kimi",
+      "uninstall": {
+        "windows": "uv tool uninstall kimi-cli",
+        "macos": "uv tool uninstall kimi-cli || rm -f \"$HOME/.local/bin/kimi\"",
+        "linux": "uv tool uninstall kimi-cli || rm -f \"$HOME/.local/bin/kimi\""
+      }
+    },
+    "qwen": {
+      "author": "Alibaba Cloud",
+      "description": "Assistente de código da família Qwen com foco em tarefas de longa duração",
+      "description_en": "Code assistant from the Qwen family focused on long-running tasks",
+      "needs_git": 0,
+      "path_entry": {
+        "windows": "%LOCALAPPDATA%\\Programs\\Qwen"
+      },
+      "install": {
+        "windows": "curl.exe -fsSL -o \"$env:TEMP\\install-qwen.bat\" https://qwen-code-assets.oss-cn-hangzhou.aliyuncs.com/installation/install-qwen.bat; if ($LASTEXITCODE -ne 0) { exit 1 }; & \"$env:TEMP\\install-qwen.bat\" --source qwenchat 2>&1 | Out-Host; if ((Test-Path \"$env:APPDATA\\npm\\qwen.cmd\") -or (Test-Path \"$env:LOCALAPPDATA\\Programs\\Qwen\\qwen.exe\") -or (Get-Command qwen -ErrorAction SilentlyContinue)) { exit 0 } else { exit 1 }",
+        "macos": "bash -c \"$(curl -fsSL https://qwen-code-assets.oss-cn-hangzhou.aliyuncs.com/installation/install-qwen.sh)\" -s --source qwenchat",
+        "linux": "bash -c \"$(curl -fsSL https://qwen-code-assets.oss-cn-hangzhou.aliyuncs.com/installation/install-qwen.sh)\" -s --source qwenchat"
+      },
+      "upgrade": {
+        "all": null
+      },
+      "run": "qwen",
+      "uninstall": {
+        "windows": "if (Test-Path \"$env:LOCALAPPDATA\\Programs\\Qwen\\uninstall.exe\") { & \"$env:LOCALAPPDATA\\Programs\\Qwen\\uninstall.exe\" /S } elseif (Test-Path \"$env:ProgramFiles\\Qwen\\uninstall.exe\") { & \"$env:ProgramFiles\\Qwen\\uninstall.exe\" /S }; $npmPrefix = (npm prefix -g 2>$null); foreach ($name in @('qwen','qwen-code','@qwen/code','qwenchat')) { npm uninstall -g $name 2>$null }; foreach ($ext in @('.cmd','.ps1','')) { $stub = \"$npmPrefix\\qwen$ext\"; if (Test-Path $stub) { Remove-Item $stub -Force } }; exit 0",
+        "macos": "([ -f /usr/local/bin/qwen ] && sudo rm -f /usr/local/bin/qwen || true) && rm -f \"$HOME/.local/bin/qwen\"",
+        "linux": "([ -f /usr/local/bin/qwen ] && sudo rm -f /usr/local/bin/qwen || true) && rm -f \"$HOME/.local/bin/qwen\""
+      }
+    },
+    "groq": {
+      "author": "Groq",
+      "description": "CLI de codificação com inferência ultrarrápida via hardware LPU da Groq",
+      "description_en": "Coding CLI with ultra-fast inference via Groq LPU hardware",
+      "needs_git": 0,
+      "install": {
+        "all": "npm install -g groq-code-cli@latest"
+      },
+      "upgrade": {
+        "all": "npm install -g groq-code-cli@latest"
+      },
+      "run": "groq",
+      "uninstall": {
+        "all": "npm uninstall -g groq-code-cli"
+      }
+    },
+    "openhands": {
+      "author": "All Hands AI",
+      "description": "Agente de software autônomo capaz de executar tarefas complexas de desenvolvimento",
+      "description_en": "Autonomous software agent capable of executing complex development tasks",
+      "needs_git": 0,
+      "install": {
+        "linux": "curl -fsSL https://install.openhands.dev/install.sh | sh",
+        "macos": "curl -fsSL https://install.openhands.dev/install.sh | sh"
+      },
+      "upgrade": {
+        "linux": "curl -fsSL https://install.openhands.dev/install.sh | sh",
+        "macos": "curl -fsSL https://install.openhands.dev/install.sh | sh"
+      },
+      "run": "openhands",
+      "uninstall": {
+        "linux": "([ -f /usr/local/bin/openhands ] && sudo rm -f /usr/local/bin/openhands || true) && rm -f \"$HOME/.local/bin/openhands\"",
+        "macos": "([ -f /usr/local/bin/openhands ] && sudo rm -f /usr/local/bin/openhands || true) && rm -f \"$HOME/.local/bin/openhands\""
+      }
+    },
+    "cline": {
+      "author": "Cline Bot",
+      "description": "Agente autônomo com acesso ao sistema de arquivos, terminal e navegador",
+      "description_en": "Autonomous agent with filesystem, terminal and browser access",
+      "needs_git": 0,
+      "install": {
+        "all": "npm install -g cline"
+      },
+      "upgrade": {
+        "all": "npm install -g cline@latest"
+      },
+      "run": "cline",
+      "uninstall": {
+        "all": "npm uninstall -g cline"
+      }
+    },
+    "forgecode": {
+      "author": "Forge",
+      "description": "CLI de codificação com integração nativa ao shell e fluxo conversacional",
+      "description_en": "Coding CLI with native shell integration and conversational flow",
+      "needs_git": 0,
+      "path_entry": {
+        "windows": "%USERPROFILE%\\.forge\\bin"
+      },
+      "install": {
+        "linux": "curl -fsSL https://forgecode.dev/cli | sh",
+        "macos": "curl -fsSL https://forgecode.dev/cli | sh",
+        "windows": "irm https://forgecode.dev/cli.ps1 | iex"
+      },
+      "upgrade": {
+        "linux": "curl -fsSL https://forgecode.dev/cli | sh",
+        "macos": "curl -fsSL https://forgecode.dev/cli | sh",
+        "windows": "irm https://forgecode.dev/cli.ps1 | iex"
+      },
+      "run": "forge",
+      "uninstall": {
+        "windows": "if exist \"%USERPROFILE%\\.forge\\bin\\forge.exe\" del /f /q \"%USERPROFILE%\\.forge\\bin\\forge.exe\"",
+        "macos": "([ -f /usr/local/bin/forge ] && sudo rm -f /usr/local/bin/forge || true) && rm -f \"$HOME/.local/bin/forge\"",
+        "linux": "([ -f /usr/local/bin/forge ] && sudo rm -f /usr/local/bin/forge || true) && rm -f \"$HOME/.local/bin/forge\""
+      }
+    },
+    "crush": {
+      "author": "Charmbracelet",
+      "description": "Agente de codificação com interface TUI elegante no terminal",
+      "description_en": "Coding agent with elegant TUI interface in the terminal",
+      "needs_git": 0,
+      "install": {
+        "windows": "winget install charmbracelet.crush",
+        "macos": "npm install -g @charmland/crush",
+        "linux": "npm install -g @charmland/crush"
+      },
+      "upgrade": {
+        "windows": "winget upgrade charmbracelet.crush",
+        "macos": "npm install -g @charmland/crush@latest",
+        "linux": "npm install -g @charmland/crush@latest"
+      },
+      "run": "crush",
+      "uninstall": {
+        "windows": "winget uninstall -e --id charmbracelet.crush || true",
+        "macos": "npm uninstall -g @charmland/crush",
+        "linux": "npm uninstall -g @charmland/crush"
+      }
+    },
+    "grok": {
+      "author": "xAI",
+      "description": "CLI do Grok com acesso aos modelos xAI e raciocínio avançado",
+      "description_en": "Grok CLI with access to xAI models and advanced reasoning",
+      "needs_git": 0,
+      "install": {
+        "all": "npm install -g @vibe-kit/grok-cli@latest"
+      },
+      "upgrade": {
+        "all": "npm install -g @vibe-kit/grok-cli@latest"
+      },
+      "run": "grok",
+      "configure": {
+        "env_var": "GROK_API_KEY",
+        "settings_file": "~/.grok/user-settings.json",
+        "settings_key": "apiKey",
+        "prompt": "Cole sua GROK_API_KEY (obtenha em https://console.x.ai):",
+        "prompt_en": "Paste your GROK_API_KEY (get it at https://console.x.ai):"
+      },
+      "uninstall": {
+        "all": "npm uninstall -g @vibe-kit/grok-cli"
+      }
+    }
+  },
+  "ides": {
+    "cursor": {
+      "author": "Anysphere",
+      "description": "Editor de código com IA integrada, baseado no VS Code",
+      "description_en": "AI-powered code editor based on VS Code",
+      "category": "ide",
+      "needs_git": 0,
+      "install": {
+        "windows": "winget install -e --id Anysphere.Cursor",
+        "macos": "ARCH=$(uname -m | sed 's/x86_64/x64/;s/aarch64/arm64/') && curl -fsSL \"https://api2.cursor.sh/updates/download/golden/darwin-${ARCH}/cursor/stable\" -o /tmp/cursor.dmg && hdiutil attach /tmp/cursor.dmg -quiet && cp -R \"/Volumes/Cursor/Cursor.app\" /Applications/ && hdiutil detach \"/Volumes/Cursor\" -quiet && rm /tmp/cursor.dmg",
+        "linux": {
+          "debian": "ARCH=$(uname -m | sed 's/x86_64/x64/;s/aarch64/arm64/') && curl -fsSL \"https://api2.cursor.sh/updates/download/golden/linux-${ARCH}-deb/cursor/stable\" -o /tmp/cursor.deb && sudo dpkg -i /tmp/cursor.deb && rm /tmp/cursor.deb",
+          "fedora": "ARCH=$(uname -m | sed 's/x86_64/x64/;s/aarch64/arm64/') && curl -fsSL \"https://api2.cursor.sh/updates/download/golden/linux-${ARCH}-rpm/cursor/stable\" -o /tmp/cursor.rpm && sudo rpm -i /tmp/cursor.rpm && rm /tmp/cursor.rpm",
+          "arch": "ARCH=$(uname -m | sed 's/x86_64/x64/;s/aarch64/arm64/') && curl -fsSL \"https://api2.cursor.sh/updates/download/golden/linux-${ARCH}-appimage/cursor/stable\" -o ~/.local/bin/cursor && chmod +x ~/.local/bin/cursor",
+          "default": "ARCH=$(uname -m | sed 's/x86_64/x64/;s/aarch64/arm64/') && curl -fsSL \"https://api2.cursor.sh/updates/download/golden/linux-${ARCH}-appimage/cursor/stable\" -o ~/.local/bin/cursor && chmod +x ~/.local/bin/cursor"
+        }
+      },
+      "upgrade": {
+        "windows": "winget upgrade -e --id Anysphere.Cursor",
+        "macos": "ARCH=$(uname -m | sed 's/x86_64/x64/;s/aarch64/arm64/') && curl -fsSL \"https://api2.cursor.sh/updates/download/golden/darwin-${ARCH}/cursor/stable\" -o /tmp/cursor.dmg && hdiutil attach /tmp/cursor.dmg -quiet && cp -R \"/Volumes/Cursor/Cursor.app\" /Applications/ && hdiutil detach \"/Volumes/Cursor\" -quiet && rm /tmp/cursor.dmg",
+        "linux": {
+          "debian": "ARCH=$(uname -m | sed 's/x86_64/x64/;s/aarch64/arm64/') && curl -fsSL \"https://api2.cursor.sh/updates/download/golden/linux-${ARCH}-deb/cursor/stable\" -o /tmp/cursor.deb && sudo dpkg -i /tmp/cursor.deb && rm /tmp/cursor.deb",
+          "fedora": "ARCH=$(uname -m | sed 's/x86_64/x64/;s/aarch64/arm64/') && curl -fsSL \"https://api2.cursor.sh/updates/download/golden/linux-${ARCH}-rpm/cursor/stable\" -o /tmp/cursor.rpm && sudo rpm -i /tmp/cursor.rpm && rm /tmp/cursor.rpm",
+          "arch": "ARCH=$(uname -m | sed 's/x86_64/x64/;s/aarch64/arm64/') && curl -fsSL \"https://api2.cursor.sh/updates/download/golden/linux-${ARCH}-appimage/cursor/stable\" -o ~/.local/bin/cursor && chmod +x ~/.local/bin/cursor",
+          "default": "ARCH=$(uname -m | sed 's/x86_64/x64/;s/aarch64/arm64/') && curl -fsSL \"https://api2.cursor.sh/updates/download/golden/linux-${ARCH}-appimage/cursor/stable\" -o ~/.local/bin/cursor && chmod +x ~/.local/bin/cursor"
+        }
+      },
+      "run": "cursor",
+      "uninstall": {
+        "windows": "winget uninstall -e --id Anysphere.Cursor || true",
+        "macos": "rm -rf \"/Applications/Cursor.app\"",
+        "linux": {
+          "debian": "sudo apt-get remove -y cursor || sudo dpkg -r cursor || true",
+          "fedora": "sudo dnf remove -y cursor || sudo rpm -e cursor || true",
+          "arch": "rm -f \"$HOME/.local/bin/cursor\"",
+          "default": "rm -f \"$HOME/.local/bin/cursor\""
+        }
+      }
+    },
+    "zed": {
+      "author": "Zed Industries",
+      "description": "Editor de código de alta performance com colaboração e IA",
+      "description_en": "High-performance code editor with collaboration and AI",
+      "category": "ide",
+      "needs_git": 0,
+      "install": {
+        "windows": "winget install -e --id ZedIndustries.Zed",
+        "macos": "brew install --cask zed",
+        "linux": "curl -f https://zed.dev/install.sh | sh"
+      },
+      "upgrade": {
+        "windows": "winget upgrade -e --id ZedIndustries.Zed || winget install -e --id ZedIndustries.Zed",
+        "macos": "brew upgrade --cask zed || brew install --cask zed",
+        "linux": "curl -f https://zed.dev/install.sh | sh"
+      },
+      "run": "zed",
+      "uninstall": {
+        "windows": "winget uninstall -e --id ZedIndustries.Zed || true",
+        "macos": "brew uninstall --cask zed || true && rm -rf \"/Applications/Zed.app\" && rm -f \"$HOME/.local/bin/zed\"",
+        "linux": "yes | zed --uninstall || rm -f \"$HOME/.local/bin/zed\" && rm -rf \"$HOME/.local/share/zed\""
+      }
+    },
+    "trae": {
+      "author": "ByteDance / Trae",
+      "description": "IDE com agentes de IA integrada e modo Builder para automação de tarefas",
+      "description_en": "IDE with integrated AI agents and Builder mode for task automation",
+      "category": "ide",
+      "needs_git": 0,
+      "install": {
+        "windows": "$json = Invoke-RestMethod -Uri 'https://icube-normal.trae.ai/icube/api/v1/native/version/trae/latest'; $list = $json.data.manifest.win32.download; $pref = @('va','sg','usttp','cn'); $entry = $null; foreach ($r in $pref) { $entry = $list | Where-Object { $_.region -eq $r } | Select-Object -First 1; if ($entry) { break } }; if (-not $entry) { $entry = $list[0] }; $url = $entry.'x64'; $out = \"$env:TEMP\\Trae-Setup-x64.exe\"; Invoke-WebRequest -Uri $url -OutFile $out; Start-Process -FilePath $out -Wait",
+        "macos": "CHIP=$([ \"$(uname -m)\" = \"x86_64\" ] && echo intel || echo apple) && URL=$(node -e \"fetch('https://icube-normal.trae.ai/icube/api/v1/native/version/trae/latest').then(r=>r.json()).then(j=>{const d=j.data.manifest.darwin.download; const p=['va','sg','usttp','cn']; const e=p.map(r=>d.find(x=>x.region===r)).find(Boolean)||d[0]; console.log(e[process.argv[1]]);})\" \"$CHIP\") && curl -fsSL \"$URL\" -o /tmp/trae.dmg && MNT=$(hdiutil attach /tmp/trae.dmg -quiet | awk '/\\/Volumes\\//{print $3; exit}') && APP_SRC=$(find \"$MNT\" -maxdepth 2 -name 'Trae.app' | head -n1) && [ -z \"$APP_SRC\" ] && APP_SRC=$(find \"$MNT\" -maxdepth 2 -name 'TRAE.app' | head -n1) && [ -n \"$APP_SRC\" ] && cp -R \"$APP_SRC\" /Applications/ && hdiutil detach \"$MNT\" -quiet && rm /tmp/trae.dmg",
+        "linux": {
+          "debian": "URL=$(node -e \"fetch('https://icube-normal.trae.ai/icube/api/v1/native/version/trae/latest').then(r=>r.json()).then(j=>{const d=j.data.manifest.linux.download; const p=['va','sg','usttp','cn']; const e=p.map(r=>d.find(x=>x.region===r)).find(Boolean)||d[0]; console.log(e[process.argv[1]]);})\" \"x64.deb\") && curl -fsSL \"$URL\" -o /tmp/trae.deb && sudo dpkg -i /tmp/trae.deb && rm /tmp/trae.deb",
+          "fedora": "URL=$(node -e \"fetch('https://icube-normal.trae.ai/icube/api/v1/native/version/trae/latest').then(r=>r.json()).then(j=>{const d=j.data.manifest.linux.download; const p=['va','sg','usttp','cn']; const e=p.map(r=>d.find(x=>x.region===r)).find(Boolean)||d[0]; console.log(e[process.argv[1]]);})\" \"x64.rpm\") && curl -fsSL \"$URL\" -o /tmp/trae.rpm && sudo rpm -Uvh --replacepkgs /tmp/trae.rpm && rm /tmp/trae.rpm",
+          "arch": "URL=$(node -e \"fetch('https://icube-normal.trae.ai/icube/api/v1/native/version/trae/latest').then(r=>r.json()).then(j=>{const d=j.data.manifest.linux.download; const p=['va','sg','usttp','cn']; const e=p.map(r=>d.find(x=>x.region===r)).find(Boolean)||d[0]; console.log(e[process.argv[1]]);})\" \"x64.tar.gz\") && TMP=$(mktemp -d) && curl -fsSL \"$URL\" -o \"$TMP/trae.tar.gz\" && mkdir -p \"$HOME/.local/opt/trae\" \"$HOME/.local/bin\" && tar -xzf \"$TMP/trae.tar.gz\" -C \"$HOME/.local/opt/trae\" && BIN=$(find \"$HOME/.local/opt/trae\" -type f -name 'Trae' | head -n1) && [ -z \"$BIN\" ] && BIN=$(find \"$HOME/.local/opt/trae\" -type f -name '*.AppImage' | head -n1) && [ -z \"$BIN\" ] && BIN=$(find \"$HOME/.local/opt/trae\" -type f -name 'trae' | head -n1) && [ -n \"$BIN\" ] && chmod +x \"$BIN\" && ln -sf \"$BIN\" \"$HOME/.local/bin/trae\" && rm -rf \"$TMP\"",
+          "default": "URL=$(node -e \"fetch('https://icube-normal.trae.ai/icube/api/v1/native/version/trae/latest').then(r=>r.json()).then(j=>{const d=j.data.manifest.linux.download; const p=['va','sg','usttp','cn']; const e=p.map(r=>d.find(x=>x.region===r)).find(Boolean)||d[0]; console.log(e[process.argv[1]]);})\" \"x64.tar.gz\") && TMP=$(mktemp -d) && curl -fsSL \"$URL\" -o \"$TMP/trae.tar.gz\" && mkdir -p \"$HOME/.local/opt/trae\" \"$HOME/.local/bin\" && tar -xzf \"$TMP/trae.tar.gz\" -C \"$HOME/.local/opt/trae\" && BIN=$(find \"$HOME/.local/opt/trae\" -type f -name 'Trae' | head -n1) && [ -z \"$BIN\" ] && BIN=$(find \"$HOME/.local/opt/trae\" -type f -name '*.AppImage' | head -n1) && [ -z \"$BIN\" ] && BIN=$(find \"$HOME/.local/opt/trae\" -type f -name 'trae' | head -n1) && [ -n \"$BIN\" ] && chmod +x \"$BIN\" && ln -sf \"$BIN\" \"$HOME/.local/bin/trae\" && rm -rf \"$TMP\""
+        }
+      },
+      "upgrade": {
+        "windows": "$json = Invoke-RestMethod -Uri 'https://icube-normal.trae.ai/icube/api/v1/native/version/trae/latest'; $list = $json.data.manifest.win32.download; $pref = @('va','sg','usttp','cn'); $entry = $null; foreach ($r in $pref) { $entry = $list | Where-Object { $_.region -eq $r } | Select-Object -First 1; if ($entry) { break } }; if (-not $entry) { $entry = $list[0] }; $url = $entry.'x64'; $out = \"$env:TEMP\\Trae-Setup-x64.exe\"; Invoke-WebRequest -Uri $url -OutFile $out; Start-Process -FilePath $out -Wait",
+        "macos": "CHIP=$([ \"$(uname -m)\" = \"x86_64\" ] && echo intel || echo apple) && URL=$(node -e \"fetch('https://icube-normal.trae.ai/icube/api/v1/native/version/trae/latest').then(r=>r.json()).then(j=>{const d=j.data.manifest.darwin.download; const p=['va','sg','usttp','cn']; const e=p.map(r=>d.find(x=>x.region===r)).find(Boolean)||d[0]; console.log(e[process.argv[1]]);})\" \"$CHIP\") && curl -fsSL \"$URL\" -o /tmp/trae.dmg && MNT=$(hdiutil attach /tmp/trae.dmg -quiet | awk '/\\/Volumes\\//{print $3; exit}') && APP_SRC=$(find \"$MNT\" -maxdepth 2 -name 'Trae.app' | head -n1) && [ -z \"$APP_SRC\" ] && APP_SRC=$(find \"$MNT\" -maxdepth 2 -name 'TRAE.app' | head -n1) && [ -n \"$APP_SRC\" ] && cp -R \"$APP_SRC\" /Applications/ && hdiutil detach \"$MNT\" -quiet && rm /tmp/trae.dmg",
+        "linux": {
+          "debian": "URL=$(node -e \"fetch('https://icube-normal.trae.ai/icube/api/v1/native/version/trae/latest').then(r=>r.json()).then(j=>{const d=j.data.manifest.linux.download; const p=['va','sg','usttp','cn']; const e=p.map(r=>d.find(x=>x.region===r)).find(Boolean)||d[0]; console.log(e[process.argv[1]]);})\" \"x64.deb\") && curl -fsSL \"$URL\" -o /tmp/trae.deb && sudo dpkg -i /tmp/trae.deb && rm /tmp/trae.deb",
+          "fedora": "URL=$(node -e \"fetch('https://icube-normal.trae.ai/icube/api/v1/native/version/trae/latest').then(r=>r.json()).then(j=>{const d=j.data.manifest.linux.download; const p=['va','sg','usttp','cn']; const e=p.map(r=>d.find(x=>x.region===r)).find(Boolean)||d[0]; console.log(e[process.argv[1]]);})\" \"x64.rpm\") && curl -fsSL \"$URL\" -o /tmp/trae.rpm && sudo rpm -Uvh --replacepkgs /tmp/trae.rpm && rm /tmp/trae.rpm",
+          "arch": "URL=$(node -e \"fetch('https://icube-normal.trae.ai/icube/api/v1/native/version/trae/latest').then(r=>r.json()).then(j=>{const d=j.data.manifest.linux.download; const p=['va','sg','usttp','cn']; const e=p.map(r=>d.find(x=>x.region===r)).find(Boolean)||d[0]; console.log(e[process.argv[1]]);})\" \"x64.tar.gz\") && TMP=$(mktemp -d) && curl -fsSL \"$URL\" -o \"$TMP/trae.tar.gz\" && mkdir -p \"$HOME/.local/opt/trae\" \"$HOME/.local/bin\" && tar -xzf \"$TMP/trae.tar.gz\" -C \"$HOME/.local/opt/trae\" && BIN=$(find \"$HOME/.local/opt/trae\" -type f -name 'Trae' | head -n1) && [ -z \"$BIN\" ] && BIN=$(find \"$HOME/.local/opt/trae\" -type f -name '*.AppImage' | head -n1) && [ -z \"$BIN\" ] && BIN=$(find \"$HOME/.local/opt/trae\" -type f -name 'trae' | head -n1) && [ -n \"$BIN\" ] && chmod +x \"$BIN\" && ln -sf \"$BIN\" \"$HOME/.local/bin/trae\" && rm -rf \"$TMP\"",
+          "default": "URL=$(node -e \"fetch('https://icube-normal.trae.ai/icube/api/v1/native/version/trae/latest').then(r=>r.json()).then(j=>{const d=j.data.manifest.linux.download; const p=['va','sg','usttp','cn']; const e=p.map(r=>d.find(x=>x.region===r)).find(Boolean)||d[0]; console.log(e[process.argv[1]]);})\" \"x64.tar.gz\") && TMP=$(mktemp -d) && curl -fsSL \"$URL\" -o \"$TMP/trae.tar.gz\" && mkdir -p \"$HOME/.local/opt/trae\" \"$HOME/.local/bin\" && tar -xzf \"$TMP/trae.tar.gz\" -C \"$HOME/.local/opt/trae\" && BIN=$(find \"$HOME/.local/opt/trae\" -type f -name 'Trae' | head -n1) && [ -z \"$BIN\" ] && BIN=$(find \"$HOME/.local/opt/trae\" -type f -name '*.AppImage' | head -n1) && [ -z \"$BIN\" ] && BIN=$(find \"$HOME/.local/opt/trae\" -type f -name 'trae' | head -n1) && [ -n \"$BIN\" ] && chmod +x \"$BIN\" && ln -sf \"$BIN\" \"$HOME/.local/bin/trae\" && rm -rf \"$TMP\""
+        }
+      },
+      "run": "trae",
+      "uninstall": {
+        "windows": "winget uninstall -e --id ByteDance.Trae || winget uninstall -e --id Trae.Trae || true",
+        "macos": "rm -rf \"/Applications/Trae.app\" \"/Applications/TRAE.app\"",
+        "linux": {
+          "debian": "sudo apt-get remove -y trae || sudo dpkg -r trae || true && rm -f \"$HOME/.local/bin/trae\" && rm -rf \"$HOME/.local/opt/trae\"",
+          "fedora": "sudo dnf remove -y trae || sudo rpm -e trae || true && rm -f \"$HOME/.local/bin/trae\" && rm -rf \"$HOME/.local/opt/trae\"",
+          "arch": "rm -f \"$HOME/.local/bin/trae\" && rm -rf \"$HOME/.local/opt/trae\"",
+          "default": "rm -f \"$HOME/.local/bin/trae\" && rm -rf \"$HOME/.local/opt/trae\""
+        }
+      }
+    },
+    "opencode-desktop": {
+      "author": "Anomaly",
+      "description": "OpenCode Desktop (Beta) para uso do agente em interface gráfica",
+      "description_en": "OpenCode Desktop (Beta) for agent use in graphical interface",
+      "category": "ide",
+      "needs_git": 0,
+      "skip_version_probe": true,
+      "install": {
+        "windows": "$url = 'https://opencode.ai/download/stable/windows-x64-nsis'; $out = \"$env:TEMP\\OpenCodeDesktopSetup.exe\"; Invoke-WebRequest -Uri $url -OutFile $out; Start-Process -FilePath $out -Wait",
+        "macos": "ARCH=$(uname -m) && URL=$([ \"$ARCH\" = \"x86_64\" ] && echo 'https://opencode.ai/download/stable/darwin-x64-dmg' || echo 'https://opencode.ai/download/stable/darwin-aarch64-dmg') && curl -fsSL \"$URL\" -o /tmp/opencode-desktop.dmg && MNT=$(hdiutil attach /tmp/opencode-desktop.dmg -quiet | awk '/\\/Volumes\\//{print $3; exit}') && APP_SRC=$(find \"$MNT\" -maxdepth 2 -name '*.app' | head -n1) && [ -n \"$APP_SRC\" ] && cp -R \"$APP_SRC\" /Applications/ && hdiutil detach \"$MNT\" -quiet && rm /tmp/opencode-desktop.dmg",
+        "linux": {
+          "debian": "URL='https://opencode.ai/download/stable/linux-x64-deb' && curl -fsSL \"$URL\" -o /tmp/opencode-desktop.deb && sudo dpkg -i /tmp/opencode-desktop.deb && rm /tmp/opencode-desktop.deb",
+          "fedora": "URL='https://opencode.ai/download/stable/linux-x64-rpm' && curl -fsSL \"$URL\" -o /tmp/opencode-desktop.rpm && sudo rpm -Uvh --replacepkgs /tmp/opencode-desktop.rpm && rm /tmp/opencode-desktop.rpm",
+          "arch": "URL='https://opencode.ai/download/stable/linux-x64-appimage' && mkdir -p \"$HOME/.local/bin\" && curl -fsSL \"$URL\" -o \"$HOME/.local/bin/opencode-desktop\" && chmod +x \"$HOME/.local/bin/opencode-desktop\"",
+          "default": "URL='https://opencode.ai/download/stable/linux-x64-appimage' && mkdir -p \"$HOME/.local/bin\" && curl -fsSL \"$URL\" -o \"$HOME/.local/bin/opencode-desktop\" && chmod +x \"$HOME/.local/bin/opencode-desktop\""
+        }
+      },
+      "upgrade": {
+        "windows": "$url = 'https://opencode.ai/download/stable/windows-x64-nsis'; $out = \"$env:TEMP\\OpenCodeDesktopSetup.exe\"; Invoke-WebRequest -Uri $url -OutFile $out; Start-Process -FilePath $out -Wait",
+        "macos": "ARCH=$(uname -m) && URL=$([ \"$ARCH\" = \"x86_64\" ] && echo 'https://opencode.ai/download/stable/darwin-x64-dmg' || echo 'https://opencode.ai/download/stable/darwin-aarch64-dmg') && curl -fsSL \"$URL\" -o /tmp/opencode-desktop.dmg && MNT=$(hdiutil attach /tmp/opencode-desktop.dmg -quiet | awk '/\\/Volumes\\//{print $3; exit}') && APP_SRC=$(find \"$MNT\" -maxdepth 2 -name '*.app' | head -n1) && [ -n \"$APP_SRC\" ] && cp -R \"$APP_SRC\" /Applications/ && hdiutil detach \"$MNT\" -quiet && rm /tmp/opencode-desktop.dmg",
+        "linux": {
+          "debian": "URL='https://opencode.ai/download/stable/linux-x64-deb' && curl -fsSL \"$URL\" -o /tmp/opencode-desktop.deb && sudo dpkg -i /tmp/opencode-desktop.deb && rm /tmp/opencode-desktop.deb",
+          "fedora": "URL='https://opencode.ai/download/stable/linux-x64-rpm' && curl -fsSL \"$URL\" -o /tmp/opencode-desktop.rpm && sudo rpm -Uvh --replacepkgs /tmp/opencode-desktop.rpm && rm /tmp/opencode-desktop.rpm",
+          "arch": "URL='https://opencode.ai/download/stable/linux-x64-appimage' && mkdir -p \"$HOME/.local/bin\" && curl -fsSL \"$URL\" -o \"$HOME/.local/bin/opencode-desktop\" && chmod +x \"$HOME/.local/bin/opencode-desktop\"",
+          "default": "URL='https://opencode.ai/download/stable/linux-x64-appimage' && mkdir -p \"$HOME/.local/bin\" && curl -fsSL \"$URL\" -o \"$HOME/.local/bin/opencode-desktop\" && chmod +x \"$HOME/.local/bin/opencode-desktop\""
+        }
+      },
+      "run": "OpenCode",
+      "uninstall": {
+        "windows": "winget uninstall -e --id Anomaly.OpenCodeDesktop || winget uninstall -e --id OpenCode.OpenCodeDesktop || true",
+        "macos": "rm -rf \"/Applications/OpenCode.app\" \"/Applications/OpenCode Desktop.app\"",
+        "linux": {
+          "debian": "sudo apt-get remove -y opencode-desktop opencode || sudo dpkg -r opencode-desktop opencode || true && rm -f \"$HOME/.local/bin/opencode-desktop\"",
+          "fedora": "sudo dnf remove -y opencode-desktop opencode || sudo rpm -e opencode-desktop opencode || true && rm -f \"$HOME/.local/bin/opencode-desktop\"",
+          "arch": "rm -f \"$HOME/.local/bin/opencode-desktop\"",
+          "default": "rm -f \"$HOME/.local/bin/opencode-desktop\""
+        }
+      }
+    },
+    "windsurf": {
+      "author": "Codeium / Windsurf",
+      "description": "IDE agentic com fluxo colaborativo de IA para desenvolvimento",
+      "description_en": "Agentic IDE with collaborative AI flow for development",
+      "category": "ide",
+      "needs_git": 0,
+      "install": {
+        "windows": "$html = (Invoke-WebRequest -Uri 'https://windsurf.com/editor/releases').Content; $m = [regex]::Match($html, 'https://windsurf-stable\\.codeiumdata\\.com/win32-x64-user/stable/[^\"''\\\\]+\\.exe'); if (-not $m.Success) { throw 'URL de download não encontrada' }; $out = \"$env:TEMP\\WindsurfUserSetup-x64.exe\"; Invoke-WebRequest -Uri $m.Value -OutFile $out; Start-Process -FilePath $out -Wait",
+        "macos": "ARCH=$(uname -m) && PATTERN=$([ \"$ARCH\" = \"x86_64\" ] && echo 'https://windsurf-stable\\.codeiumdata\\.com/darwin-x64-dmg/stable/[^\" ]+\\.dmg' || echo 'https://windsurf-stable\\.codeiumdata\\.com/darwin-arm64-dmg/stable/[^\" ]+\\.dmg') && URL=$(curl -fsSL https://windsurf.com/editor/releases | grep -oE \"$PATTERN\" | head -n1) && [ -n \"$URL\" ] && curl -fsSL \"$URL\" -o /tmp/windsurf.dmg && MNT=$(hdiutil attach /tmp/windsurf.dmg -quiet | awk '/\\/Volumes\\//{print $3; exit}') && APP_SRC=$(find \"$MNT\" -maxdepth 2 -name 'Windsurf.app' | head -n1) && [ -n \"$APP_SRC\" ] && cp -R \"$APP_SRC\" /Applications/ && hdiutil detach \"$MNT\" -quiet && rm /tmp/windsurf.dmg",
+        "linux": {
+          "debian": "URL=$(curl -fsSL https://windsurf.com/editor/releases | grep -oE 'https://windsurf-stable\\.codeiumdata\\.com/linux-x64-deb/stable/[^\" ]+\\.deb' | head -n1) && [ -n \"$URL\" ] && curl -fsSL \"$URL\" -o /tmp/windsurf.deb && sudo dpkg -i /tmp/windsurf.deb && rm /tmp/windsurf.deb",
+          "fedora": "URL=$(curl -fsSL https://windsurf.com/editor/releases | grep -oE 'https://windsurf-stable\\.codeiumdata\\.com/linux-x64/stable/[^\" ]+\\.tar\\.gz' | head -n1) && [ -n \"$URL\" ] && TMP=$(mktemp -d) && curl -fsSL \"$URL\" -o \"$TMP/windsurf.tar.gz\" && mkdir -p \"$HOME/.local/opt/windsurf\" \"$HOME/.local/bin\" && rm -rf \"$HOME/.local/opt/windsurf/\"* && tar -xzf \"$TMP/windsurf.tar.gz\" -C \"$HOME/.local/opt/windsurf\" && BIN=$(find \"$HOME/.local/opt/windsurf\" -type f -name 'windsurf' | head -n1) && [ -z \"$BIN\" ] && BIN=$(find \"$HOME/.local/opt/windsurf\" -type f -name 'Windsurf' | head -n1) && [ -z \"$BIN\" ] && BIN=$(find \"$HOME/.local/opt/windsurf\" -type f -name '*.AppImage' | head -n1) && [ -n \"$BIN\" ] && chmod +x \"$BIN\" && ln -sf \"$BIN\" \"$HOME/.local/bin/windsurf\" && rm -rf \"$TMP\"",
+          "arch": "URL=$(curl -fsSL https://windsurf.com/editor/releases | grep -oE 'https://windsurf-stable\\.codeiumdata\\.com/linux-x64/stable/[^\" ]+\\.tar\\.gz' | head -n1) && [ -n \"$URL\" ] && TMP=$(mktemp -d) && curl -fsSL \"$URL\" -o \"$TMP/windsurf.tar.gz\" && mkdir -p \"$HOME/.local/opt/windsurf\" \"$HOME/.local/bin\" && rm -rf \"$HOME/.local/opt/windsurf/\"* && tar -xzf \"$TMP/windsurf.tar.gz\" -C \"$HOME/.local/opt/windsurf\" && BIN=$(find \"$HOME/.local/opt/windsurf\" -type f -name 'windsurf' | head -n1) && [ -z \"$BIN\" ] && BIN=$(find \"$HOME/.local/opt/windsurf\" -type f -name 'Windsurf' | head -n1) && [ -z \"$BIN\" ] && BIN=$(find \"$HOME/.local/opt/windsurf\" -type f -name '*.AppImage' | head -n1) && [ -n \"$BIN\" ] && chmod +x \"$BIN\" && ln -sf \"$BIN\" \"$HOME/.local/bin/windsurf\" && rm -rf \"$TMP\"",
+          "default": "URL=$(curl -fsSL https://windsurf.com/editor/releases | grep -oE 'https://windsurf-stable\\.codeiumdata\\.com/linux-x64/stable/[^\" ]+\\.tar\\.gz' | head -n1) && [ -n \"$URL\" ] && TMP=$(mktemp -d) && curl -fsSL \"$URL\" -o \"$TMP/windsurf.tar.gz\" && mkdir -p \"$HOME/.local/opt/windsurf\" \"$HOME/.local/bin\" && rm -rf \"$HOME/.local/opt/windsurf/\"* && tar -xzf \"$TMP/windsurf.tar.gz\" -C \"$HOME/.local/opt/windsurf\" && BIN=$(find \"$HOME/.local/opt/windsurf\" -type f -name 'windsurf' | head -n1) && [ -z \"$BIN\" ] && BIN=$(find \"$HOME/.local/opt/windsurf\" -type f -name 'Windsurf' | head -n1) && [ -z \"$BIN\" ] && BIN=$(find \"$HOME/.local/opt/windsurf\" -type f -name '*.AppImage' | head -n1) && [ -n \"$BIN\" ] && chmod +x \"$BIN\" && ln -sf \"$BIN\" \"$HOME/.local/bin/windsurf\" && rm -rf \"$TMP\""
+        }
+      },
+      "upgrade": {
+        "windows": "$html = (Invoke-WebRequest -Uri 'https://windsurf.com/editor/releases').Content; $m = [regex]::Match($html, 'https://windsurf-stable\\.codeiumdata\\.com/win32-x64-user/stable/[^\"''\\\\]+\\.exe'); if (-not $m.Success) { throw 'URL de download não encontrada' }; $out = \"$env:TEMP\\WindsurfUserSetup-x64.exe\"; Invoke-WebRequest -Uri $m.Value -OutFile $out; Start-Process -FilePath $out -Wait",
+        "macos": "ARCH=$(uname -m) && PATTERN=$([ \"$ARCH\" = \"x86_64\" ] && echo 'https://windsurf-stable\\.codeiumdata\\.com/darwin-x64-dmg/stable/[^\" ]+\\.dmg' || echo 'https://windsurf-stable\\.codeiumdata\\.com/darwin-arm64-dmg/stable/[^\" ]+\\.dmg') && URL=$(curl -fsSL https://windsurf.com/editor/releases | grep -oE \"$PATTERN\" | head -n1) && [ -n \"$URL\" ] && curl -fsSL \"$URL\" -o /tmp/windsurf.dmg && MNT=$(hdiutil attach /tmp/windsurf.dmg -quiet | awk '/\\/Volumes\\//{print $3; exit}') && APP_SRC=$(find \"$MNT\" -maxdepth 2 -name 'Windsurf.app' | head -n1) && [ -n \"$APP_SRC\" ] && cp -R \"$APP_SRC\" /Applications/ && hdiutil detach \"$MNT\" -quiet && rm /tmp/windsurf.dmg",
+        "linux": {
+          "debian": "URL=$(curl -fsSL https://windsurf.com/editor/releases | grep -oE 'https://windsurf-stable\\.codeiumdata\\.com/linux-x64-deb/stable/[^\" ]+\\.deb' | head -n1) && [ -n \"$URL\" ] && curl -fsSL \"$URL\" -o /tmp/windsurf.deb && sudo dpkg -i /tmp/windsurf.deb && rm /tmp/windsurf.deb",
+          "fedora": "URL=$(curl -fsSL https://windsurf.com/editor/releases | grep -oE 'https://windsurf-stable\\.codeiumdata\\.com/linux-x64/stable/[^\" ]+\\.tar\\.gz' | head -n1) && [ -n \"$URL\" ] && TMP=$(mktemp -d) && curl -fsSL \"$URL\" -o \"$TMP/windsurf.tar.gz\" && mkdir -p \"$HOME/.local/opt/windsurf\" \"$HOME/.local/bin\" && rm -rf \"$HOME/.local/opt/windsurf/\"* && tar -xzf \"$TMP/windsurf.tar.gz\" -C \"$HOME/.local/opt/windsurf\" && BIN=$(find \"$HOME/.local/opt/windsurf\" -type f -name 'windsurf' | head -n1) && [ -z \"$BIN\" ] && BIN=$(find \"$HOME/.local/opt/windsurf\" -type f -name 'Windsurf' | head -n1) && [ -z \"$BIN\" ] && BIN=$(find \"$HOME/.local/opt/windsurf\" -type f -name '*.AppImage' | head -n1) && [ -n \"$BIN\" ] && chmod +x \"$BIN\" && ln -sf \"$BIN\" \"$HOME/.local/bin/windsurf\" && rm -rf \"$TMP\"",
+          "arch": "URL=$(curl -fsSL https://windsurf.com/editor/releases | grep -oE 'https://windsurf-stable\\.codeiumdata\\.com/linux-x64/stable/[^\" ]+\\.tar\\.gz' | head -n1) && [ -n \"$URL\" ] && TMP=$(mktemp -d) && curl -fsSL \"$URL\" -o \"$TMP/windsurf.tar.gz\" && mkdir -p \"$HOME/.local/opt/windsurf\" \"$HOME/.local/bin\" && rm -rf \"$HOME/.local/opt/windsurf/\"* && tar -xzf \"$TMP/windsurf.tar.gz\" -C \"$HOME/.local/opt/windsurf\" && BIN=$(find \"$HOME/.local/opt/windsurf\" -type f -name 'windsurf' | head -n1) && [ -z \"$BIN\" ] && BIN=$(find \"$HOME/.local/opt/windsurf\" -type f -name 'Windsurf' | head -n1) && [ -z \"$BIN\" ] && BIN=$(find \"$HOME/.local/opt/windsurf\" -type f -name '*.AppImage' | head -n1) && [ -n \"$BIN\" ] && chmod +x \"$BIN\" && ln -sf \"$BIN\" \"$HOME/.local/bin/windsurf\" && rm -rf \"$TMP\"",
+          "default": "URL=$(curl -fsSL https://windsurf.com/editor/releases | grep -oE 'https://windsurf-stable\\.codeiumdata\\.com/linux-x64/stable/[^\" ]+\\.tar\\.gz' | head -n1) && [ -n \"$URL\" ] && TMP=$(mktemp -d) && curl -fsSL \"$URL\" -o \"$TMP/windsurf.tar.gz\" && mkdir -p \"$HOME/.local/opt/windsurf\" \"$HOME/.local/bin\" && rm -rf \"$HOME/.local/opt/windsurf/\"* && tar -xzf \"$TMP/windsurf.tar.gz\" -C \"$HOME/.local/opt/windsurf\" && BIN=$(find \"$HOME/.local/opt/windsurf\" -type f -name 'windsurf' | head -n1) && [ -z \"$BIN\" ] && BIN=$(find \"$HOME/.local/opt/windsurf\" -type f -name 'Windsurf' | head -n1) && [ -z \"$BIN\" ] && BIN=$(find \"$HOME/.local/opt/windsurf\" -type f -name '*.AppImage' | head -n1) && [ -n \"$BIN\" ] && chmod +x \"$BIN\" && ln -sf \"$BIN\" \"$HOME/.local/bin/windsurf\" && rm -rf \"$TMP\""
+        }
+      },
+      "run": "windsurf",
+      "uninstall": {
+        "windows": "winget uninstall -e --id Codeium.Windsurf || winget uninstall -e --id Windsurf.Windsurf || true",
+        "macos": "rm -rf \"/Applications/Windsurf.app\"",
+        "linux": {
+          "debian": "sudo apt-get remove -y windsurf || sudo dpkg -r windsurf || true && rm -f \"$HOME/.local/bin/windsurf\"",
+          "fedora": "sudo dnf remove -y windsurf || sudo rpm -e windsurf || true && rm -f \"$HOME/.local/bin/windsurf\"",
+          "arch": "rm -f \"$HOME/.local/bin/windsurf\" && rm -rf \"$HOME/.local/opt/windsurf\"",
+          "default": "rm -f \"$HOME/.local/bin/windsurf\" && rm -rf \"$HOME/.local/opt/windsurf\""
+        }
+      }
+    }
+  }
+}
