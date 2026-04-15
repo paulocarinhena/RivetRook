@@ -298,7 +298,6 @@
       "description_en": "Open source code assistant with multi-model AI support",
       "needs_git": 0,
       "version_cmd": {
-        "windows": "opencode-cli --version",
         "all": "opencode --version"
       },
       "install": {
@@ -307,7 +306,7 @@
         "bun": "bun add -g opencode-ai"
       },
       "upgrade": {
-        "all": "opencode upgrade"
+        "all": "npm i -g opencode-ai@latest"
       },
       "run": "opencode",
       "uninstall": {
