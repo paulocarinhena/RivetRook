@@ -1516,12 +1516,11 @@ def configure_api_key(tool_name: str, cfg: Dict, os_name: str) -> None:
 
 
 def _status_cell(version: Optional[str], access: str) -> Tuple[str, str]:
-    """Return (icon, colored-label) for a tool row."""
     if version:
         if access == "profile":
             return _warn("◐"), _warn(_t("shell_profile"))
-        return _ok("●"), _ok(_t("status_installed"))
-    return _dim("·"), _err(_t("status_not_installed"))
+        return _ok("✓"), _ok(_t("status_installed"))
+    return _err("✗"), _err(_t("status_not_installed"))
 
 
 def _tool_row(
@@ -1533,20 +1532,19 @@ def _tool_row(
     name_w: int,
     stat_w: int,
     ver_w: int,
+    num_w: int,
 ) -> None:
-    """Print a single compact tool row."""
-
     access = tool_access_state(block, os_name)
     icon, status_label = _status_cell(version, access)
 
     cfg = block.get("configure")
     if version and cfg:
-        key_badge = " " + (_ok("⚿") if _api_key_configured(cfg) else _warn("⚿"))
+        key_badge = " " + (_ok("⚷") if _api_key_configured(cfg) else _warn("⚷"))
     else:
         key_badge = ""
 
     author = block.get("author", "")
-    num_str = _rjust(_bold(str(idx)), 3)
+    num_str = _dim(_rjust(str(idx), num_w))
     name_lbl = _hi(name) if version else name
     if author:
         name_lbl = "{} {}".format(name_lbl, _dim("· " + author))
@@ -1558,27 +1556,34 @@ def _tool_row(
         version_txt = version_txt[: max(1, ver_w - 1)] + "…"
     ver_str = _dim(_ljust(version_txt, ver_w))
 
-    sep = _dim("│")
-    print("  {} {} {} {} {} {} {}".format(num_str, sep, name_str, sep, stat_str, sep, ver_str))
+    print("  │ {} │ {} │ {} │ {} │".format(num_str, name_str, stat_str, ver_str))
 
 
-def _section_divider(label: str, total_w: int) -> None:
-    """Print a category section divider (e.g. CLI Tools / IDEs)."""
-    cap = "◈ " + label + " "
-    bar_len = max(8, total_w - len(cap))
-    bar = "─" * bar_len
-    print("\n  " + _c(_A.BBLUE + _A.BOLD, cap) + _dim(bar))
+def _table_hline(left: str, mid: str, right: str, fill: str, col_widths: List[int]) -> str:
+    parts = [left]
+    for i, w in enumerate(col_widths):
+        if i > 0:
+            parts.append(mid)
+        parts.append(fill * (w + 2))
+    parts.append(right)
+    return "  " + "".join(parts)
 
 
-def _section_header(name_w: int, stat_col_w: int, ver_w: int) -> None:
-    """Print column headers for the tools table."""
-    sep = _dim("│")
-    col_num = _dim(_ljust("#", 3))
-    col_name = _dim(_ljust("Tool", name_w))
-    col_status = _dim(_ljust("Status", stat_col_w))
-    col_ver = _dim(_ljust("Version", ver_w))
-    print("  {} {} {} {} {} {} {}".format(col_num, sep, col_name, sep, col_status, sep, col_ver))
-    print("  {}".format(_dim("─" * (3 + 3 + name_w + 3 + stat_col_w + 3 + ver_w))))
+def _section_label(label: str, col_widths: List[int]) -> None:
+    total_inner = sum(w + 2 for w in col_widths) + len(col_widths) - 1
+    styled = _c(_A.BBLUE + _A.BOLD, " ◈ " + label)
+    styled_len = _vlen(styled)
+    fill_len = max(0, total_inner - styled_len - 1)
+    print()
+    print("  {}{}".format(styled, _dim(" " + "─" * fill_len)))
+
+
+def _section_header(col_widths: List[int]) -> None:
+    headers = [_t("col_num"), _t("col_tool"), _t("col_status"), _t("col_version")]
+    styled = [_ljust(_c(_A.BOLD + _A.CYAN, h), w) for h, w in zip(headers, col_widths)]
+    print(_table_hline("┌", "┬", "┐", "─", col_widths))
+    print("  │ {} │ {} │ {} │ {} │".format(*styled))
+    print(_table_hline("├", "┼", "┤", "─", col_widths))
 
 
 def print_tools_table(
@@ -1586,9 +1591,8 @@ def print_tools_table(
 ) -> None:
     """Render the full tools table to stdout, split into CLI Tools and IDEs sections.
 
-    Installed tools are listed first within each section, followed by
-    not-installed ones.  Column widths are computed dynamically to fit the
-    longest name.
+    Each section gets its own bordered table with header.  Column widths are
+    computed dynamically to fit the longest name.
     """
     all_tools = {**tools, **ides}
     name_labels = []
@@ -1599,12 +1603,19 @@ def print_tools_table(
         else:
             name_labels.append(n)
     name_w = max(len(lbl) for lbl in name_labels) + 1
-    stat_w = 16
+    header_labels = [_t("col_num"), _t("col_tool"), _t("col_status"), _t("col_version")]
+    name_w = max(name_w, len(header_labels[1]))
+    stat_w = max(16, len(header_labels[2]))
     stat_col_w = stat_w + 2
-    ver_w = 36
-    total_w = 3 + 1 + name_w + 1 + stat_col_w + 1 + ver_w
+    ver_w = max(36, len(header_labels[3]))
+    num_w = max(3, len(header_labels[0]))
+    col_widths = [num_w, name_w, stat_col_w, ver_w]
 
-    def _render_rows(indexed_names: List[Tuple[int, str]], src: Dict) -> None:
+    def _render_section(
+        label: str, indexed_names: List[Tuple[int, str]], src: Dict
+    ) -> None:
+        _section_label(label, col_widths)
+        _section_header(col_widths)
         for idx, name in indexed_names:
             _tool_row(
                 idx,
@@ -1615,26 +1626,30 @@ def print_tools_table(
                 name_w,
                 stat_w,
                 ver_w,
+                num_w,
             )
+        print(_table_hline("└", "┴", "┘", "─", col_widths))
 
-    # ── CLI Tools section ────────────────────────────────────────────────────
+    # CLI Tools section
     cli_names = list(tools.keys())
     cli_rows = [(i + 1, n) for i, n in enumerate(cli_names)]
+    _render_section(_t("section_cli"), cli_rows, tools)
 
-    _section_divider("CLI Tools", total_w)
-    _section_header(name_w, stat_col_w, ver_w)
-    _render_rows(cli_rows, tools)
-
-    # ── IDEs section ─────────────────────────────────────────────────────────
+    # IDEs section
     if ides:
         ide_names = list(ides.keys())
-        ide_offset = len(cli_names)  # IDE indices follow CLI indices
+        ide_offset = len(cli_names)
         ide_rows = [(ide_offset + i + 1, n) for i, n in enumerate(ide_names)]
+        _render_section(_t("section_ides"), ide_rows, ides)
 
-        _section_divider("IDEs", total_w)
-        _section_header(name_w, stat_col_w, ver_w)
-        _render_rows(ide_rows, ides)
-
+    # Legend
+    print()
+    legend_parts = [
+        "{} {}".format(_ok("✓"), _t("legend_installed")),
+        "{} {}".format(_warn("◐"), _t("legend_profile")),
+        "{} {}".format(_err("✗"), _t("legend_not_installed")),
+    ]
+    print("  " + "   ".join(legend_parts))
     print()
 
 
@@ -1657,9 +1672,9 @@ def ensure_prerequisite(
     all_ok = all(command_ok(ch, os_name) for ch in checks)
 
     if all_ok:
-        print("  {} {}".format(_ok("✔"), _t("already_installed", _bold(pre_name))))
         return
 
+    print_section(_t("prerequisite_section"))
     print("  {} {}".format(_warn("⚠"), _t("not_found", _bold(pre_name))))
     if not ask_yes_no(
         _t("install_now", _bold(pre_name)), default_yes=True
@@ -1871,22 +1886,45 @@ def manage_tools(config: Dict, os_name: str, linux_family: Optional[str]) -> Non
     def _choose_action(
         selected: str, current_version: Optional[str], cfg_block: Optional[Dict]
     ) -> Optional[str]:
-        print(
-            "\n  {} {} {}".format(
-                _bold(selected), _dim("(" + (current_version or _t("not_installed_label")) + ")"),
-                _t("choose_action")
-            )
-        )
-        print("  {} {}  {}".format(_dim("│"), _bold("1."), _t("action_install")))
-        print("  {} {}  {}".format(_dim("│"), _bold("2."), _t("action_upgrade")))
-        print("  {} {}  {}".format(_dim("│"), _bold("3."), _t("action_uninstall")))
+        tool_block = all_tools[selected]
+        author = tool_block.get("author", "")
+        description = _desc(tool_block)
+        version_str = current_version or _t("not_installed_label")
+
+        line1 = "{} {}".format(_bold(selected), _dim(version_str))
+        content_w = _vlen(line1)
+        if author or description:
+            parts = []
+            if author:
+                parts.append(author)
+            if description:
+                parts.append(description)
+            info_line = _dim(" — ".join(parts))
+            content_w = max(content_w, _vlen(info_line))
+        else:
+            info_line = ""
+
+        box_w = max(content_w + 4, 40)
+
+        print()
+        print("  ╭" + "─" * box_w + "╮")
+        print("  │" + _ljust(" " + line1, box_w) + "│")
+        if info_line:
+            print("  │" + _ljust(" " + info_line, box_w) + "│")
+        print("  ╰" + "─" * box_w + "╯")
+
+        print()
+        print("  {} {}  {}".format(_ok("↓"), _bold("1."), _t("action_install")))
+        print("  {} {}  {}".format(_blue("↑"), _bold("2."), _t("action_upgrade")))
+        print("  {} {}  {}".format(_err("✕"), _bold("3."), _t("action_uninstall")))
 
         if cfg_block:
             key_ok = _api_key_configured(cfg_block)
             key_label = _t("key_configured") if key_ok else _t("key_not_configured")
+            key_icon = _ok("⚷") if key_ok else _warn("⚷")
             print(
                 "  {} {}  {} {}".format(
-                    _dim("│"), _bold("4."), _t("configure_api_key"), _dim("(" + key_label + ")")
+                    key_icon, _bold("4."), _t("configure_api_key"), _dim("(" + key_label + ")")
                 )
             )
             valid = {"1": "install", "2": "upgrade", "3": "uninstall", "4": "configure"}
@@ -1896,7 +1934,7 @@ def manage_tools(config: Dict, os_name: str, linux_family: Optional[str]) -> Non
             hint = _t("action_hint_3")
 
         while True:
-            raw = input("\n  {} {} {} ".format(_bold("❯"), _t("action_label"), _dim(hint))).strip()
+            raw = input("\n  {} {} {} ".format(_bold("▸"), _t("action_label"), _dim(hint))).strip()
             if not raw:
                 return None
             if raw in valid:
@@ -1910,13 +1948,13 @@ def manage_tools(config: Dict, os_name: str, linux_family: Optional[str]) -> Non
                 _info("ℹ"), _t("multi_choose_action", len(selections))
             )
         )
-        print("  {} {}  {}".format(_dim("│"), _bold("1."), _t("action_install")))
-        print("  {} {}  {}".format(_dim("│"), _bold("2."), _t("action_upgrade")))
-        print("  {} {}  {}".format(_dim("│"), _bold("3."), _t("action_uninstall")))
+        print("  {} {}  {}".format(_ok("↓"), _bold("1."), _t("action_install")))
+        print("  {} {}  {}".format(_blue("↑"), _bold("2."), _t("action_upgrade")))
+        print("  {} {}  {}".format(_err("✕"), _bold("3."), _t("action_uninstall")))
         valid = {"1": "install", "2": "upgrade", "3": "uninstall"}
         hint = _t("multi_action_hint_3")
         while True:
-            raw = input("\n  {} {} {} ".format(_bold("❯"), _t("action_label"), _dim(hint))).strip()
+            raw = input("\n  {} {} {} ".format(_bold("▸"), _t("action_label"), _dim(hint))).strip()
             if not raw:
                 return None
             if raw in valid:
@@ -2156,21 +2194,10 @@ def manage_tools(config: Dict, os_name: str, linux_family: Optional[str]) -> Non
             return
 
         if len(selections) == 1:
-            # ── Single tool: show info + full action menu (incl. configure) ──
             selected = selections[0]
             tool_block = all_tools[selected]
             current_version = version_map.get(selected)
             cfg_block = tool_block.get("configure")
-            author = tool_block.get("author", "")
-            description = _desc(tool_block)
-
-            if author or description:
-                info_parts = []
-                if author:
-                    info_parts.append(author)
-                if description:
-                    info_parts.append(description)
-                print("\n  {} {}".format(_info("ℹ"), _dim(" — ".join(info_parts))))
 
             action_key = _choose_action(selected, current_version, cfg_block)
             if action_key is None:
@@ -2255,7 +2282,6 @@ def main() -> None:
             )
         )
 
-    print_section(_t("prerequisite_section"))
     ensure_prerequisite(config, os_name, linux_family)
 
     manage_tools(config, os_name, linux_family)

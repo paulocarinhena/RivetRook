@@ -115,7 +115,16 @@
       "path_added_ok": "{} adicionado ao PATH para funcionar corretamente.",
       "path_add_failed": "Não foi possível atualizar o PATH automaticamente.",
       "path_manual_hint": "Adicione manualmente: Propriedades do Sistema → Variáveis de Ambiente → PATH do Usuário → Novo",
-      "press_key": "Finalizado! Pressione qualquer tecla para continuar…"
+      "press_key": "Finalizado! Pressione qualquer tecla para continuar…",
+      "col_num": "#",
+      "col_tool": "Ferramenta",
+      "col_status": "Status",
+      "col_version": "Versão",
+      "section_cli": "Ferramentas CLI",
+      "section_ides": "IDEs",
+      "legend_installed": "instalado",
+      "legend_profile": "perfil de shell",
+      "legend_not_installed": "não instalado"
     },
     "en": {
       "lang_prompt": "Escolha o idioma / Choose language:",
@@ -232,7 +241,16 @@
       "path_added_ok": "{} added to PATH to work correctly.",
       "path_add_failed": "Could not update PATH automatically.",
       "path_manual_hint": "Add manually: System Properties → Environment Variables → User PATH → New",
-      "press_key": "Done! Press any key to continue…"
+      "press_key": "Done! Press any key to continue…",
+      "col_num": "#",
+      "col_tool": "Tool",
+      "col_status": "Status",
+      "col_version": "Version",
+      "section_cli": "CLI Tools",
+      "section_ides": "IDEs",
+      "legend_installed": "installed",
+      "legend_profile": "shell profile",
+      "legend_not_installed": "not installed"
     }
   },
   "prerequisite": {
