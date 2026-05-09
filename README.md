@@ -102,6 +102,7 @@ Ao iniciar, o programa:
 | Ferramenta | Autor | Descrição |
 |-----------|-------|-----------|
 | **codex** | OpenAI | Agente de codificação autônomo no terminal |
+| **pi** | Earendil Works | Agente de codificação terminal com SDK e extensões |
 | **claude** | Anthropic | CLI oficial do Claude Code |
 | **opencode** | SST / Dax | Assistente open source multi-modelo |
 | **copilot** | GitHub / Microsoft | Assistente com integração nativa ao GitHub |
@@ -296,6 +297,7 @@ On startup, the program:
 | Tool | Author | Description |
 |------|--------|-------------|
 | **codex** | OpenAI | Autonomous coding agent in the terminal |
+| **pi** | Earendil Works | Terminal coding agent with SDK and extensions |
 | **claude** | Anthropic | Official Claude Code CLI |
 | **opencode** | SST / Dax | Open-source multi-model coding assistant |
 | **copilot** | GitHub / Microsoft | Assistant with native GitHub integration |

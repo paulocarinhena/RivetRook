@@ -269,6 +269,22 @@
         "all": "npm uninstall -g @openai/codex"
       }
     },
+    "pi": {
+      "author": "Earendil Works",
+      "description": "Agente de codificação para terminal com SDK, extensões e temas customizáveis",
+      "description_en": "Terminal coding agent with SDK, extensions, and customizable themes",
+      "needs_git": 0,
+      "install": {
+        "all": "npm i -g @earendil-works/pi-coding-agent"
+      },
+      "upgrade": {
+        "all": "npm i -g @earendil-works/pi-coding-agent@latest"
+      },
+      "run": "pi",
+      "uninstall": {
+        "all": "npm uninstall -g @earendil-works/pi-coding-agent"
+      }
+    },
     "claude": {
       "author": "Anthropic",
       "description": "CLI oficial do Claude Code com acesso total ao ambiente de desenvolvimento",
