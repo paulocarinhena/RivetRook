@@ -366,22 +366,6 @@
         "linux": "npm uninstall -g @github/copilot || (command -v gh >/dev/null 2>&1 && gh extension remove github/gh-copilot) || true"
       }
     },
-    "cody": {
-      "author": "Sourcegraph",
-      "description": "CLI do Cody para chat e automação de código no terminal",
-      "description_en": "Cody CLI for chat and code automation in the terminal",
-      "needs_git": 0,
-      "install": {
-        "all": "npm install -g @sourcegraph/cody"
-      },
-      "upgrade": {
-        "all": "npm install -g @sourcegraph/cody@latest"
-      },
-      "run": "cody",
-      "uninstall": {
-        "all": "npm uninstall -g @sourcegraph/cody"
-      }
-    },
     "kilocode": {
       "author": "Kilo Code",
       "description": "Fork open source do Cline com funcionalidades extras e sem limites de uso",
