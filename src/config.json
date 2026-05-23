@@ -400,16 +400,16 @@
         "all": "npm uninstall -g @kilocode/cli"
       }
     },
-    "gemini": {
+    "geminicli": {
       "author": "Google",
-      "description": "CLI do Gemini com acesso aos modelos Google e integração com Google Search",
-      "description_en": "Gemini CLI with access to Google models and Google Search integration",
+      "description": "CLI oficial do Gemini (geminicli.com) com acesso aos modelos Google e integração com Google Search",
+      "description_en": "Official Gemini CLI (geminicli.com) with access to Google models and Google Search integration",
       "needs_git": 0,
       "install": {
         "all": "npm install -g @google/gemini-cli"
       },
       "upgrade": {
-        "all": null
+        "all": "npm install -g @google/gemini-cli@latest"
       },
       "run": "gemini",
       "uninstall": {

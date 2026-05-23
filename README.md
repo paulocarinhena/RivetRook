@@ -108,7 +108,7 @@ Ao iniciar, o programa:
 | **copilot** | GitHub / Microsoft | Assistente com integração nativa ao GitHub |
 | **cody** | Sourcegraph | CLI para chat e automação de código |
 | **kilocode** | Kilo Code | Fork open source do Cline |
-| **gemini** | Google | CLI com acesso ao Gemini e Google Search |
+| **geminicli** | Google | CLI oficial do Gemini (geminicli.com) |
 | **kimi** | Moonshot AI | CLI com suporte a ACP/MCP |
 | **qwen** | Alibaba | Assistente de codificação da Alibaba |
 | **groq** | Groq | CLI com inferência ultra-rápida via LPU |
@@ -303,7 +303,7 @@ On startup, the program:
 | **copilot** | GitHub / Microsoft | Assistant with native GitHub integration |
 | **cody** | Sourcegraph | CLI for chat and code automation |
 | **kilocode** | Kilo Code | Open-source fork of Cline |
-| **gemini** | Google | CLI with Gemini and Google Search access |
+| **geminicli** | Google | Official Gemini CLI (geminicli.com) |
 | **kimi** | Moonshot AI | CLI with ACP/MCP support |
 | **qwen** | Alibaba | Alibaba coding assistant CLI |
 | **groq** | Groq | CLI with ultra-fast LPU inference |

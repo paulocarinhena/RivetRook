@@ -1322,6 +1322,54 @@ def ensure_npm_user_prefix(os_name: str) -> bool:
         return False
 
 
+def _repair_missing_binary_path(
+    action_cmd: str,
+    run_bin: str,
+    os_name: str,
+) -> bool:
+    """Try to repair PATH when an install succeeded but binary is missing.
+
+    Currently targets npm global installs by deriving the global prefix and
+    ensuring the matching bin directory is available in the current process
+    PATH. On Windows it also persists the entry to the user PATH.
+    """
+    if not _is_npm_global_cmd(action_cmd):
+        return False
+
+    npm = which("npm")
+    if not npm:
+        return False
+
+    try:
+        probe = run_command("npm config get prefix", os_name, show_command=False, timeout=8)
+    except Exception:
+        return False
+    if probe.returncode != 0:
+        return False
+
+    prefix = (probe.stdout or "").strip()
+    if not prefix:
+        return False
+
+    if os_name == "windows":
+        bin_dir = str(Path(prefix))
+        if not Path(bin_dir).exists():
+            return False
+        if not _ensure_path_entry(bin_dir, os_name):
+            return False
+        refresh_windows_path_from_registry()
+    else:
+        bin_dir = str(Path(prefix) / "bin")
+        if not Path(bin_dir).exists():
+            return False
+        path_parts = [p for p in os.environ.get("PATH", "").split(os.pathsep) if p]
+        if bin_dir not in path_parts:
+            os.environ["PATH"] = bin_dir + os.pathsep + os.environ.get("PATH", "")
+        persist_user_bin_path(os_name)
+
+    return which(run_bin) is not None
+
+
 # ─── Parallel Version Scan ────────────────────────────────────────────────────
 
 VersionMap = Dict[str, Optional[str]]
@@ -2098,6 +2146,11 @@ def manage_tools(config: Dict, os_name: str, linux_family: Optional[str]) -> Non
                             )
                         )
                 else:
+                    if not (needs_reload or bin_path):
+                        repaired = _repair_missing_binary_path(action_cmd, run_bin, os_name)
+                        if repaired:
+                            bin_path = which(run_bin)
+                            needs_reload = needs_reload or tool_access_state(tool_block, os_name) == "profile"
                     if needs_reload or bin_path:
                         print("  {} [{}] {}".format(_ok("✔"), _bold(selected), _t("installed_excl")))
                     else:
