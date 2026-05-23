@@ -15,10 +15,44 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Generate tag
         id: tag
         run: echo "tag=v$(date +'%Y.%m.%d')-${GITHUB_SHA::7}" >> "$GITHUB_OUTPUT"
+
+      - name: Build release notes
+        id: notes
+        env:
+          TAG: ${{ steps.tag.outputs.tag }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+
+          PREV_TAG="$(git tag --sort=-creatordate | head -n 1 || true)"
+
+          if [ -n "$PREV_TAG" ]; then
+            CHANGES="$(git log --no-merges --pretty=format:'- %s (%h)' "${PREV_TAG}..HEAD")"
+          else
+            CHANGES="$(git log -1 --pretty=format:'- %s (%h)')"
+          fi
+
+          if [ -z "$CHANGES" ]; then
+            CHANGES="- No commit messages found in range."
+          fi
+
+          {
+            echo "body<<EOF"
+            echo "## Changes"
+            echo
+            echo "$CHANGES"
+            echo
+            if [ -n "$PREV_TAG" ]; then
+              echo "**Full Changelog**: https://github.com/${REPOSITORY}/compare/${PREV_TAG}...${TAG}"
+            fi
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
 
       - name: Create and push tag
         run: |
@@ -31,4 +65,4 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.tag.outputs.tag }}
-          generate_release_notes: true
+          body: ${{ steps.notes.outputs.body }}
