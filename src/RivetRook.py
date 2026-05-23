@@ -2079,10 +2079,25 @@ def manage_tools(config: Dict, os_name: str, linux_family: Optional[str]) -> Non
         result = run_install_command(action_cmd, os_name, label)
 
         if result.returncode == 0:
+            # On Windows, uninstallers/installers often update PATH in the
+            # registry only. Refresh current process PATH before post-action
+            # detection so the tool table reflects the new state immediately.
+            if os_name == "windows":
+                refresh_windows_path_from_registry()
+
             if action_key == "uninstall":
                 post_state = tool_access_state(tool_block, os_name)
                 run_bin = tool_block.get("run", selected)
                 bin_path = which(run_bin)
+                # Some uninstallers finish background cleanup a few seconds
+                # after returning. Retry briefly before reporting stale status.
+                if post_state != "missing" and os_name == "windows":
+                    deadline = time.time() + 8.0
+                    while time.time() < deadline and post_state != "missing":
+                        time.sleep(0.8)
+                        refresh_windows_path_from_registry()
+                        post_state = tool_access_state(tool_block, os_name)
+                        bin_path = which(run_bin)
                 if post_state == "missing":
                     print(
                         "  {} [{}] {}".format(
@@ -2114,12 +2129,6 @@ def manage_tools(config: Dict, os_name: str, linux_family: Optional[str]) -> Non
                 path_entry_block = tool_block.get("path_entry")
                 if path_entry_block and os_name in path_entry_block:
                     _ensure_path_entry(path_entry_block[os_name], os_name)
-
-                # Windows: refresh PATH from registry so we can detect newly
-                # installed binaries (winget, msi, etc. update the registry but
-                # the running Python process still holds the old PATH snapshot).
-                if os_name == "windows":
-                    refresh_windows_path_from_registry()
 
                 new_version = detect_tool_version(selected, tool_block, os_name)
 
@@ -2181,7 +2190,7 @@ def manage_tools(config: Dict, os_name: str, linux_family: Optional[str]) -> Non
                         default_yes=True,
                     ):
                         configure_api_key(selected, cfg_block, os_name)
-                return True
+            return True
         else:
             print(
                 "  {} [{}] {}".format(
@@ -2190,17 +2199,8 @@ def manage_tools(config: Dict, os_name: str, linux_family: Optional[str]) -> Non
             )
         return False
 
-    _clear_before_scan = False
-
-    while True:
-        if _clear_before_scan:
-            os.system("cls" if sys.platform == "win32" else "clear")
-        _clear_before_scan = False
-
-        # ── Scan versions in parallel with a live animated progress bar ──
-        # A ticker thread advances the spinner frame every ~90ms while reading
-        # the shared percent value that the scan callback keeps up to date.
-        # Only the ticker writes to stdout so there is no interleaving.
+    def _scan_versions_with_progress() -> VersionMap:
+        """Scan all tools once with a progress bar."""
         scan_label = _t("checking_tools")
         scan_percent = [0]
         scan_stop = threading.Event()
@@ -2222,7 +2222,7 @@ def manage_tools(config: Dict, os_name: str, linux_family: Optional[str]) -> Non
 
         ticker = threading.Thread(target=_scan_ticker, daemon=True)
         ticker.start()
-        version_map = scan_all_versions(
+        versions = scan_all_versions(
             all_tools, os_name, on_progress=_on_scan_progress
         )
         scan_stop.set()
@@ -2238,6 +2238,43 @@ def manage_tools(config: Dict, os_name: str, linux_family: Optional[str]) -> Non
             end="",
             flush=True,
         )
+        return versions
+
+    def _refresh_selected_versions(selected_names: List[str], action_key: str) -> None:
+        """Refresh only the selected tools using the same scan path as full scan."""
+        if not selected_names:
+            return
+        subset = {n: all_tools[n] for n in selected_names}
+        previous = {n: version_map.get(n) for n in selected_names}
+
+        attempts = 4 if os_name == "windows" else 2
+        for i in range(attempts):
+            if os_name == "windows":
+                refresh_windows_path_from_registry()
+            refreshed = scan_all_versions(subset, os_name)
+            for name, ver in refreshed.items():
+                version_map[name] = ver
+
+            if action_key == "install":
+                if all(version_map.get(n) is not None for n in selected_names):
+                    return
+            elif action_key == "uninstall":
+                if all(version_map.get(n) is None for n in selected_names):
+                    return
+            else:
+                if any(version_map.get(n) != previous.get(n) for n in selected_names):
+                    return
+
+            if i < attempts - 1:
+                time.sleep(0.8)
+
+    _clear_before_scan = False
+    version_map = _scan_versions_with_progress()
+
+    while True:
+        if _clear_before_scan:
+            os.system("cls" if sys.platform == "win32" else "clear")
+        _clear_before_scan = False
 
         print_tools_table(tools, ides, version_map, os_name)
 
@@ -2261,6 +2298,7 @@ def manage_tools(config: Dict, os_name: str, linux_family: Optional[str]) -> Non
                 continue
 
             if _execute_action(selected, action_key):
+                _refresh_selected_versions([selected], action_key)
                 _press_any_key()
                 _clear_before_scan = True
 
@@ -2286,6 +2324,7 @@ def manage_tools(config: Dict, os_name: str, linux_family: Optional[str]) -> Non
                 )
                 if _execute_action(selected, action_key):
                     any_success = True
+                    _refresh_selected_versions([selected], action_key)
             if any_success:
                 _press_any_key()
                 _clear_before_scan = True
