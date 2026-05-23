@@ -335,16 +335,14 @@
         "all": "opencode --version"
       },
       "install": {
-        "all": "npm i -g opencode-ai",
-        "linux_alt": "curl -fsSL https://opencode.ai/install | bash",
-        "bun": "bun add -g opencode-ai"
+        "all": "npm install -g opencode-ai"
       },
       "upgrade": {
-        "all": "npm i -g opencode-ai@latest"
+        "all": "npm install -g opencode-ai@latest"
       },
       "run": "opencode",
       "uninstall": {
-        "all": "npm uninstall -g opencode-ai || bun remove -g opencode-ai || true"
+        "all": "npm uninstall -g opencode-ai || true"
       }
     },
     "copilot": {
@@ -694,7 +692,7 @@
       "needs_git": 0,
       "skip_version_probe": true,
       "install": {
-        "windows": "$url = 'https://opencode.ai/download/stable/windows-x64-nsis'; $out = \"$env:TEMP\\OpenCodeDesktopSetup.exe\"; Invoke-WebRequest -Uri $url -OutFile $out; Start-Process -FilePath $out -Wait",
+        "windows": "$url = 'https://opencode.ai/br/download/stable/windows-x64-nsis'; $out = \"$env:TEMP\\OpenCodeDesktopSetup.exe\"; Invoke-WebRequest -Uri $url -OutFile $out; Start-Process -FilePath $out -Wait",
         "macos": "ARCH=$(uname -m) && URL=$([ \"$ARCH\" = \"x86_64\" ] && echo 'https://opencode.ai/download/stable/darwin-x64-dmg' || echo 'https://opencode.ai/download/stable/darwin-aarch64-dmg') && curl -fsSL \"$URL\" -o /tmp/opencode-desktop.dmg && MNT=$(hdiutil attach /tmp/opencode-desktop.dmg -quiet | awk '/\\/Volumes\\//{print $3; exit}') && APP_SRC=$(find \"$MNT\" -maxdepth 2 -name '*.app' | head -n1) && [ -n \"$APP_SRC\" ] && cp -R \"$APP_SRC\" /Applications/ && hdiutil detach \"$MNT\" -quiet && rm /tmp/opencode-desktop.dmg",
         "linux": {
           "debian": "URL='https://opencode.ai/download/stable/linux-x64-deb' && curl -fsSL \"$URL\" -o /tmp/opencode-desktop.deb && sudo dpkg -i /tmp/opencode-desktop.deb && rm /tmp/opencode-desktop.deb",
@@ -704,7 +702,7 @@
         }
       },
       "upgrade": {
-        "windows": "$url = 'https://opencode.ai/download/stable/windows-x64-nsis'; $out = \"$env:TEMP\\OpenCodeDesktopSetup.exe\"; Invoke-WebRequest -Uri $url -OutFile $out; Start-Process -FilePath $out -Wait",
+        "windows": "$url = 'https://opencode.ai/br/download/stable/windows-x64-nsis'; $out = \"$env:TEMP\\OpenCodeDesktopSetup.exe\"; Invoke-WebRequest -Uri $url -OutFile $out; Start-Process -FilePath $out -Wait",
         "macos": "ARCH=$(uname -m) && URL=$([ \"$ARCH\" = \"x86_64\" ] && echo 'https://opencode.ai/download/stable/darwin-x64-dmg' || echo 'https://opencode.ai/download/stable/darwin-aarch64-dmg') && curl -fsSL \"$URL\" -o /tmp/opencode-desktop.dmg && MNT=$(hdiutil attach /tmp/opencode-desktop.dmg -quiet | awk '/\\/Volumes\\//{print $3; exit}') && APP_SRC=$(find \"$MNT\" -maxdepth 2 -name '*.app' | head -n1) && [ -n \"$APP_SRC\" ] && cp -R \"$APP_SRC\" /Applications/ && hdiutil detach \"$MNT\" -quiet && rm /tmp/opencode-desktop.dmg",
         "linux": {
           "debian": "URL='https://opencode.ai/download/stable/linux-x64-deb' && curl -fsSL \"$URL\" -o /tmp/opencode-desktop.deb && sudo dpkg -i /tmp/opencode-desktop.deb && rm /tmp/opencode-desktop.deb",
