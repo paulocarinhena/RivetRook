@@ -321,7 +321,7 @@
       },
       "run": "claude",
       "uninstall": {
-        "windows": "winget uninstall -e --id Anthropic.Claude || winget uninstall -e --id Claude.Claude || true",
+        "windows": "if (Test-Path \"$env:USERPROFILE\\.local\\bin\\claude.exe\") { Remove-Item -Force \"$env:USERPROFILE\\.local\\bin\\claude.exe\" }; exit 0",
         "macos": "([ -f /usr/local/bin/claude ] && sudo rm -f /usr/local/bin/claude || true) && rm -f \"$HOME/.local/bin/claude\"",
         "linux": "([ -f /usr/local/bin/claude ] && sudo rm -f /usr/local/bin/claude || true) && rm -f \"$HOME/.local/bin/claude\""
       }
@@ -342,6 +342,7 @@
       },
       "run": "opencode",
       "uninstall": {
+        "windows": "npm uninstall -g opencode-ai; exit 0",
         "all": "npm uninstall -g opencode-ai || true"
       }
     },
@@ -361,7 +362,7 @@
       },
       "run": "copilot",
       "uninstall": {
-        "windows": "winget uninstall -e --id GitHub.Copilot || true",
+        "windows": "winget uninstall -e --id GitHub.Copilot; exit 0",
         "macos": "npm uninstall -g @github/copilot || (command -v gh >/dev/null 2>&1 && gh extension remove github/gh-copilot) || true",
         "linux": "npm uninstall -g @github/copilot || (command -v gh >/dev/null 2>&1 && gh extension remove github/gh-copilot) || true"
       }
@@ -407,12 +408,12 @@
         "windows": "%USERPROFILE%\\.local\\bin"
       },
       "install": {
-        "windows": "Invoke-RestMethod https://code.kimi.com/install.ps1 | Invoke-Expression",
+        "windows": "irm https://code.kimi.com/install.ps1 | iex",
         "macos": "curl -LsSf https://code.kimi.com/install.sh | bash",
         "linux": "curl -LsSf https://code.kimi.com/install.sh | bash"
       },
       "upgrade": {
-        "windows": "Invoke-RestMethod https://code.kimi.com/install.ps1 | Invoke-Expression",
+        "windows": "irm https://code.kimi.com/install.ps1 | iex",
         "macos": "uv tool upgrade kimi-cli --no-cache || curl -LsSf https://code.kimi.com/install.sh | bash",
         "linux": "uv tool upgrade kimi-cli --no-cache || curl -LsSf https://code.kimi.com/install.sh | bash"
       },
@@ -517,7 +518,7 @@
       },
       "run": "forge",
       "uninstall": {
-        "windows": "if exist \"%USERPROFILE%\\.forge\\bin\\forge.exe\" del /f /q \"%USERPROFILE%\\.forge\\bin\\forge.exe\"",
+        "windows": "if (Test-Path \"$env:USERPROFILE\\.forge\\bin\\forge.exe\") { Remove-Item -Force \"$env:USERPROFILE\\.forge\\bin\\forge.exe\" }; exit 0",
         "macos": "([ -f /usr/local/bin/forge ] && sudo rm -f /usr/local/bin/forge || true) && rm -f \"$HOME/.local/bin/forge\"",
         "linux": "([ -f /usr/local/bin/forge ] && sudo rm -f /usr/local/bin/forge || true) && rm -f \"$HOME/.local/bin/forge\""
       }
@@ -539,7 +540,7 @@
       },
       "run": "crush",
       "uninstall": {
-        "windows": "winget uninstall -e --id charmbracelet.crush || true",
+        "windows": "winget uninstall -e --id charmbracelet.crush; exit 0",
         "macos": "npm uninstall -g @charmland/crush",
         "linux": "npm uninstall -g @charmland/crush"
       }
@@ -597,7 +598,7 @@
       },
       "run": "cursor",
       "uninstall": {
-        "windows": "winget uninstall -e --id Anysphere.Cursor || true",
+        "windows": "winget uninstall -e --id Anysphere.Cursor; exit 0",
         "macos": "rm -rf \"/Applications/Cursor.app\"",
         "linux": {
           "debian": "sudo apt-get remove -y cursor || sudo dpkg -r cursor || true",
@@ -619,13 +620,13 @@
         "linux": "curl -f https://zed.dev/install.sh | sh"
       },
       "upgrade": {
-        "windows": "winget upgrade -e --id ZedIndustries.Zed || winget install -e --id ZedIndustries.Zed",
+        "windows": "winget upgrade -e --id ZedIndustries.Zed; if ($LASTEXITCODE -ne 0) { winget install -e --id ZedIndustries.Zed }",
         "macos": "brew upgrade --cask zed || brew install --cask zed",
         "linux": "curl -f https://zed.dev/install.sh | sh"
       },
       "run": "zed",
       "uninstall": {
-        "windows": "winget uninstall -e --id ZedIndustries.Zed || true",
+        "windows": "winget uninstall -e --id ZedIndustries.Zed; exit 0",
         "macos": "brew uninstall --cask zed || true && rm -rf \"/Applications/Zed.app\" && rm -f \"$HOME/.local/bin/zed\"",
         "linux": "yes | zed --uninstall || rm -f \"$HOME/.local/bin/zed\" && rm -rf \"$HOME/.local/share/zed\""
       }
@@ -658,7 +659,7 @@
       },
       "run": "trae",
       "uninstall": {
-        "windows": "winget uninstall -e --id ByteDance.Trae || winget uninstall -e --id Trae.Trae || true",
+        "windows": "winget uninstall -e --id ByteDance.Trae; if ($LASTEXITCODE -ne 0) { winget uninstall -e --id Trae.Trae }; exit 0",
         "macos": "rm -rf \"/Applications/Trae.app\" \"/Applications/TRAE.app\"",
         "linux": {
           "debian": "sudo apt-get remove -y trae || sudo dpkg -r trae || true && rm -f \"$HOME/.local/bin/trae\" && rm -rf \"$HOME/.local/opt/trae\"",
@@ -697,7 +698,7 @@
       },
       "run": "OpenCode",
       "uninstall": {
-        "windows": "winget uninstall -e --id Anomaly.OpenCodeDesktop || winget uninstall -e --id OpenCode.OpenCodeDesktop || true",
+        "windows": "winget uninstall -e --id Anomaly.OpenCodeDesktop; if ($LASTEXITCODE -ne 0) { winget uninstall -e --id OpenCode.OpenCodeDesktop }; exit 0",
         "macos": "rm -rf \"/Applications/OpenCode.app\" \"/Applications/OpenCode Desktop.app\"",
         "linux": {
           "debian": "sudo apt-get remove -y opencode-desktop opencode || sudo dpkg -r opencode-desktop opencode || true && rm -f \"$HOME/.local/bin/opencode-desktop\"",
@@ -735,7 +736,7 @@
       },
       "run": "windsurf",
       "uninstall": {
-        "windows": "winget uninstall -e --id Codeium.Windsurf || winget uninstall -e --id Windsurf.Windsurf || true",
+        "windows": "winget uninstall -e --id Codeium.Windsurf; if ($LASTEXITCODE -ne 0) { winget uninstall -e --id Windsurf.Windsurf }; exit 0",
         "macos": "rm -rf \"/Applications/Windsurf.app\"",
         "linux": {
           "debian": "sudo apt-get remove -y windsurf || sudo dpkg -r windsurf || true && rm -f \"$HOME/.local/bin/windsurf\"",

@@ -28,6 +28,17 @@ from pathlib import Path
 from shutil import which
 from typing import Callable, Dict, List, Optional, Tuple
 
+# Windows: when stdout/stderr is redirected (pipe/file), Python falls back to
+# the legacy ANSI code page (e.g. cp1252), which cannot encode the box-drawing
+# and symbol characters used in the UI — printing them crashes the script.
+# Force UTF-8; on an interactive console this is a no-op (already UTF-8).
+if sys.platform == "win32":
+    for _stream in (sys.stdout, sys.stderr):
+        try:
+            _stream.reconfigure(encoding="utf-8", errors="replace")
+        except Exception:
+            pass
+
 
 # ─── Terminal / ANSI ──────────────────────────────────────────────────────────
 
@@ -760,9 +771,23 @@ def refresh_windows_path_from_registry() -> bool:
         return False
     merged = os.path.expandvars(";".join(parts))
 
-    if merged == os.environ.get("PATH", ""):
+    # Merge instead of replace: session-only entries (e.g. Git injected by
+    # _add_git_to_path, dirs inherited from the parent shell) are not in the
+    # registry and would be silently lost. Keep them prepended so they retain
+    # the precedence they were given when added.
+    def _norm(p: str) -> str:
+        return p.lower().rstrip("\\")
+
+    merged_set = {_norm(p) for p in merged.split(os.pathsep) if p}
+    current = os.environ.get("PATH", "")
+    session_only = [
+        p for p in current.split(os.pathsep) if p and _norm(p) not in merged_set
+    ]
+    new_path = os.pathsep.join(session_only + [merged]) if session_only else merged
+
+    if new_path == current:
         return False
-    os.environ["PATH"] = merged
+    os.environ["PATH"] = new_path
     return True
 
 
