@@ -117,6 +117,7 @@ Ao iniciar, o programa:
 | **forgecode** | Forge | CLI conversacional para repositórios |
 | **crush** | Charmbracelet | Agente TUI elegante |
 | **grok** | xAI | CLI do Grok |
+| **cursor-agent** | Anysphere | CLI do Cursor para codificação agentica |
 
 **IDEs**
 
@@ -312,6 +313,7 @@ On startup, the program:
 | **forgecode** | Forge | Conversational CLI for repositories |
 | **crush** | Charmbracelet | Elegant TUI agent |
 | **grok** | xAI | Grok CLI |
+| **cursor-agent** | Anysphere | Cursor CLI for agentic coding |
 
 **IDEs**
 

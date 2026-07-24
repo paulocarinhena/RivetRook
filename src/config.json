@@ -567,6 +567,34 @@
       "uninstall": {
         "all": "npm uninstall -g @vibe-kit/grok-cli"
       }
+    },
+    "cursor-agent": {
+      "author": "Anysphere",
+      "description": "CLI oficial do Cursor para codificação agentica direto no terminal",
+      "description_en": "Official Cursor CLI for agentic coding directly in the terminal",
+      "needs_git": 0,
+      "path_entry": {
+        "windows": "%LOCALAPPDATA%\\cursor-agent"
+      },
+      "version_cmd": {
+        "all": "cursor-agent --version"
+      },
+      "install": {
+        "windows": "irm 'https://cursor.com/install?win32=true' | iex",
+        "macos": "curl https://cursor.com/install -fsS | bash",
+        "linux": "curl https://cursor.com/install -fsS | bash"
+      },
+      "upgrade": {
+        "windows": "irm 'https://cursor.com/install?win32=true' | iex",
+        "macos": "curl https://cursor.com/install -fsS | bash",
+        "linux": "curl https://cursor.com/install -fsS | bash"
+      },
+      "run": "cursor-agent",
+      "uninstall": {
+        "windows": "$dir = \"$env:LOCALAPPDATA\\cursor-agent\"; if (Test-Path $dir) { Remove-Item -Recurse -Force $dir }; $envKey = Get-Item 'HKCU:\\Environment'; $raw = $envKey.GetValue('Path', '', 'DoNotExpandEnvironmentNames'); if ($raw) { $kept = @($raw -split ';' | Where-Object { $_ -and ([Environment]::ExpandEnvironmentVariables($_).TrimEnd('\\')) -ne $dir.TrimEnd('\\') }) -join ';'; if ($kept -ne $raw) { Set-ItemProperty -Path 'HKCU:\\Environment' -Name Path -Value $kept -Type ExpandString } }; exit 0",
+        "macos": "rm -f \"$HOME/.local/bin/cursor-agent\"; if [ -L \"$HOME/.local/bin/agent\" ]; then case \"$(readlink \"$HOME/.local/bin/agent\")\" in *cursor-agent*) rm -f \"$HOME/.local/bin/agent\";; esac; fi; rm -rf \"$HOME/.local/share/cursor-agent\"; exit 0",
+        "linux": "rm -f \"$HOME/.local/bin/cursor-agent\"; if [ -L \"$HOME/.local/bin/agent\" ]; then case \"$(readlink \"$HOME/.local/bin/agent\")\" in *cursor-agent*) rm -f \"$HOME/.local/bin/agent\";; esac; fi; rm -rf \"$HOME/.local/share/cursor-agent\"; exit 0"
+      }
     }
   },
   "ides": {
