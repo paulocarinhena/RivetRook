@@ -363,8 +363,8 @@
       "run": "copilot",
       "uninstall": {
         "windows": "winget uninstall -e --id GitHub.Copilot; exit 0",
-        "macos": "npm uninstall -g @github/copilot || (command -v gh >/dev/null 2>&1 && gh extension remove github/gh-copilot) || true",
-        "linux": "npm uninstall -g @github/copilot || (command -v gh >/dev/null 2>&1 && gh extension remove github/gh-copilot) || true"
+        "macos": "rm -f \"$HOME/.local/bin/copilot\"; if [ -f /usr/local/bin/copilot ]; then rm -f /usr/local/bin/copilot 2>/dev/null || sudo rm -f /usr/local/bin/copilot; fi; npm uninstall -g @github/copilot >/dev/null 2>&1 || true; if command -v gh >/dev/null 2>&1; then gh extension remove github/gh-copilot >/dev/null 2>&1 || true; fi; tries=0; while command -v copilot >/dev/null 2>&1 && [ \"$tries\" -lt 5 ]; do bin=\"$(command -v copilot)\"; rm -f \"$bin\" 2>/dev/null || sudo rm -f \"$bin\" 2>/dev/null || break; tries=$((tries+1)); done; exit 0",
+        "linux": "rm -f \"$HOME/.local/bin/copilot\"; if [ -f /usr/local/bin/copilot ]; then rm -f /usr/local/bin/copilot 2>/dev/null || sudo rm -f /usr/local/bin/copilot; fi; npm uninstall -g @github/copilot >/dev/null 2>&1 || true; if command -v gh >/dev/null 2>&1; then gh extension remove github/gh-copilot >/dev/null 2>&1 || true; fi; tries=0; while command -v copilot >/dev/null 2>&1 && [ \"$tries\" -lt 5 ]; do bin=\"$(command -v copilot)\"; rm -f \"$bin\" 2>/dev/null || sudo rm -f \"$bin\" 2>/dev/null || break; tries=$((tries+1)); done; exit 0"
       }
     },
     "kilocode": {
@@ -442,9 +442,9 @@
       },
       "run": "qwen",
       "uninstall": {
-        "windows": "if (Test-Path \"$env:LOCALAPPDATA\\Programs\\Qwen\\uninstall.exe\") { & \"$env:LOCALAPPDATA\\Programs\\Qwen\\uninstall.exe\" /S } elseif (Test-Path \"$env:ProgramFiles\\Qwen\\uninstall.exe\") { & \"$env:ProgramFiles\\Qwen\\uninstall.exe\" /S }; $npmPrefix = (npm prefix -g 2>$null); foreach ($name in @('qwen','qwen-code','@qwen/code','qwenchat')) { npm uninstall -g $name 2>$null }; foreach ($ext in @('.cmd','.ps1','')) { $stub = \"$npmPrefix\\qwen$ext\"; if (Test-Path $stub) { Remove-Item $stub -Force } }; exit 0",
-        "macos": "([ -f /usr/local/bin/qwen ] && sudo rm -f /usr/local/bin/qwen || true) && rm -f \"$HOME/.local/bin/qwen\"",
-        "linux": "([ -f /usr/local/bin/qwen ] && sudo rm -f /usr/local/bin/qwen || true) && rm -f \"$HOME/.local/bin/qwen\""
+        "windows": "if (Test-Path \"$env:LOCALAPPDATA\\Programs\\Qwen\\uninstall.exe\") { & \"$env:LOCALAPPDATA\\Programs\\Qwen\\uninstall.exe\" /S } elseif (Test-Path \"$env:ProgramFiles\\Qwen\\uninstall.exe\") { & \"$env:ProgramFiles\\Qwen\\uninstall.exe\" /S }; $npmPrefix = (npm prefix -g 2>$null); foreach ($name in @('@qwen-code/qwen-code','qwen','qwen-code','@qwen/code','qwenchat')) { npm uninstall -g $name 2>$null }; foreach ($ext in @('.cmd','.ps1','')) { $stub = \"$npmPrefix\\qwen$ext\"; if (Test-Path $stub) { Remove-Item $stub -Force } }; exit 0",
+        "macos": "npmPrefix=\"$(npm prefix -g 2>/dev/null)\"; for name in @qwen-code/qwen-code qwen qwen-code qwenchat; do npm uninstall -g \"$name\" >/dev/null 2>&1; done; if [ -n \"$npmPrefix\" ] && [ -f \"$npmPrefix/bin/qwen\" ]; then rm -f \"$npmPrefix/bin/qwen\"; fi; if [ -f /usr/local/bin/qwen ]; then rm -f /usr/local/bin/qwen 2>/dev/null || sudo rm -f /usr/local/bin/qwen; fi; rm -f \"$HOME/.local/bin/qwen\"; tries=0; while command -v qwen >/dev/null 2>&1 && [ \"$tries\" -lt 5 ]; do bin=\"$(command -v qwen)\"; rm -f \"$bin\" 2>/dev/null || sudo rm -f \"$bin\" 2>/dev/null || break; tries=$((tries+1)); done; exit 0",
+        "linux": "npmPrefix=\"$(npm prefix -g 2>/dev/null)\"; for name in @qwen-code/qwen-code qwen qwen-code qwenchat; do npm uninstall -g \"$name\" >/dev/null 2>&1; done; if [ -n \"$npmPrefix\" ] && [ -f \"$npmPrefix/bin/qwen\" ]; then rm -f \"$npmPrefix/bin/qwen\"; fi; if [ -f /usr/local/bin/qwen ]; then rm -f /usr/local/bin/qwen 2>/dev/null || sudo rm -f /usr/local/bin/qwen; fi; rm -f \"$HOME/.local/bin/qwen\"; tries=0; while command -v qwen >/dev/null 2>&1 && [ \"$tries\" -lt 5 ]; do bin=\"$(command -v qwen)\"; rm -f \"$bin\" 2>/dev/null || sudo rm -f \"$bin\" 2>/dev/null || break; tries=$((tries+1)); done; exit 0"
       }
     },
     "groq": {
